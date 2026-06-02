@@ -12,17 +12,17 @@
 
 ## Desktop font sizes
 
-| Element | Font family | Size | Line height | Alignment |
-|---|---|---|---|---|
-| `#intro` | ClarelSerif | 35px | 1.6 | center |
-| `#logo` | Dancing Script | JS-animated | 0.88 | center |
-| `#logo .line2` | Dancing Script | 0.84em (relative to logo) | 0 | center |
-| `#event-info` | ClarelSerif | 35px | 1.45 | center (4 cols, space-around) |
-| `#header-s3 .hs3-left` | ClarelSerif | 35px | 5px | center |
-| `#header-s3 .hs3-right` | ClarelSerif | 35px | 5px | center |
-| `#manifesto` | ClarelSerif | 66px | 1.16 | center, bottom (20vh above nav) |
-| `#curated` | ClarelSerif | 35px | 0 | center |
-| `.bottom-nav` | Elastik | clamp(11px, 1.2vw, 48px) | 0 | space-between |
+| Element | Font family | Size | Line height | Alignment | Top |
+|---|---|---|---|---|---|
+| `#intro` | ClarelSerif | 28px | 36.6px | center | 18px |
+| `#logo` | Dancing Script | JS-animated | 0.88 | center | JS-animated |
+| `#logo .line2` | Dancing Script | 0.84em (relative to logo) | 0 | center | — |
+| `#event-info` | ClarelSerif | 35px | 40px | center (4 cols, space-around) | — |
+| `#header-s3 .hs3-left` | ClarelSerif | 35px | 40px | center | — |
+| `#header-s3 .hs3-right` | ClarelSerif | 35px | 40px | center | — |
+| `#manifesto` | ClarelSerif | 66px | 1.16 | center, bottom (20vh above nav) | — |
+| `#curated` | ClarelSerif | 35px | 0 | center | — |
+| `.bottom-nav` | Elastik | clamp(11px, 1.2vw, 48px) | 0 | space-between | — |
 
 ---
 
