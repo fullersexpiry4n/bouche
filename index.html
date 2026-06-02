@@ -82,7 +82,7 @@
     #logo .line1 { display: block; }
     #logo .line2 { display: block; font-size: 0.84em; }
 
-    /* ─── EVENT INFO ─── */
+    /* ─── EVENT INFO (states 1 & 2 — 4 columns) ─── */
     #event-info {
       position: absolute;
       left: 0;
@@ -96,10 +96,50 @@
       text-align: center;
       line-height: 1.45;
       color: var(--brown);
-      will-change: top;
+      will-change: top, opacity;
     }
 
     #event-info > div { flex: 1; }
+
+    /* ─── HEADER S3 (states 3 & 4 — left | logo | right) ─── */
+    #header-s3 {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 2.2vh 5vw;
+      font-family: 'ClarelSerif', Georgia, serif;
+      font-size: clamp(10px, 1.05vw, 14px);
+      line-height: 1.5;
+      color: var(--brown);
+      opacity: 0;
+      pointer-events: none;
+      will-change: opacity;
+    }
+
+    .hs3-left {
+      flex: 1;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55em;
+    }
+
+    .hs3-center {
+      flex: 1.4; /* breathing room for the logo */
+    }
+
+    .hs3-right {
+      flex: 1;
+      text-align: right;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55em;
+      align-items: flex-end;
+    }
 
     /* ─── MANIFESTO ─── */
     #manifesto {
@@ -200,12 +240,25 @@
       <span class="line2">et terre</span>
     </div>
 
-    <!-- Event metadata -->
+    <!-- Event metadata — states 1 & 2 (4 columns at bottom → top) -->
     <div id="event-info">
       <div>Wonder Wilder<br>Farmer Fest</div>
       <div>Sunday 4.10.26<br>10H &mdash; 17H</div>
       <div>Le Monde<br>des Mille Couleurs</div>
       <div>Zweerstraat 6<br>8900 Dikkebus</div>
+    </div>
+
+    <!-- Header — states 3 & 4 (left group | logo | right group) -->
+    <div id="header-s3" aria-hidden="true">
+      <div class="hs3-left">
+        <div>Wonder Wilder<br>Farmer Fest</div>
+        <div>Sunday 4.10.26<br>10H &mdash; 17H</div>
+      </div>
+      <div class="hs3-center"></div>
+      <div class="hs3-right">
+        <div>Le Monde<br>des Mille Couleurs</div>
+        <div>Zweerstraat 6<br>8900 Dikkebus</div>
+      </div>
     </div>
 
     <!-- Organic brush stroke SVG -->
@@ -258,6 +311,7 @@
     const logo      = document.getElementById('logo');
     const intro     = document.getElementById('intro');
     const eventInfo = document.getElementById('event-info');
+    const headerS3  = document.getElementById('header-s3');
     const manifesto = document.getElementById('manifesto');
     const brush     = document.getElementById('brush');
     const curated   = document.getElementById('curated');
@@ -293,9 +347,11 @@
 
     // Values: [s1, s2, s3, s4]
     const V = {
-      logoFS:          [20,    17,     5.8,   5.8   ], // vw
-      logoTop:         [28,    20,     2,     2     ], // vh
+      logoFS:          [20,    17,     7,     7     ], // vw
+      logoTop:         [28,    20,     1.5,   1.5   ], // vh
       eventTop:        [78,    2.5,    2.5,   2.5   ], // vh
+      eventInfoOp:     [1,     1,      0,     0     ],
+      headerS3Op:      [0,     0,      1,     1     ],
       introOp:         [1,     0,      0,     0     ],
       manifestoOp:     [0,     1,      1,     1     ],
       brushOp:         [0,     0,      1,     1     ],
@@ -335,8 +391,15 @@
       // Intro
       intro.style.opacity = interp('introOp', p);
 
-      // Event info
-      eventInfo.style.top = `${interp('eventTop', p)}vh`;
+      // Event info (states 1 & 2) ↔ Header S3 (states 3 & 4) cross-fade
+      const evOp = interp('eventInfoOp', p);
+      eventInfo.style.opacity      = evOp;
+      eventInfo.style.pointerEvents = evOp > 0.1 ? 'auto' : 'none';
+      eventInfo.style.top          = `${interp('eventTop', p)}vh`;
+
+      const h3Op = interp('headerS3Op', p);
+      headerS3.style.opacity      = h3Op;
+      headerS3.style.pointerEvents = h3Op > 0.1 ? 'auto' : 'none';
 
       // Manifesto
       manifesto.style.opacity = interp('manifestoOp', p);
