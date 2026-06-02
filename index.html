@@ -21,49 +21,48 @@
 
     :root {
       --brown: #4a1810;
-      --cream: #e0e8a8;
-      --peach: #f0b8a0;
+      --cream: #f0ffa8;
+      --peach: #ffbfbf;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
-      background: var(--cream);
-      color: var(--brown);
+      background: #f0ffa8;
       overflow-x: hidden;
     }
 
-    /* Tall scroll space drives the animation */
-    .scroll-driver {
-      height: 400vh;
-    }
+    .scroll-driver { height: 400vh; }
 
-    /* Fixed stage — all content lives here */
+    /* ── Fixed 1920×1440 (4:3) canvas — JS scales to fit desktop ── */
     .stage {
       position: fixed;
-      inset: 0;
+      top: 0;
+      left: 0;
+      width: 1920px;
+      height: 1440px;
       overflow: hidden;
       background-color: var(--cream);
-      will-change: background-color;
+      transform-origin: 0 0;
+      will-change: background-color, transform;
     }
 
-    /* ─── INTRO (top, state 1 only) ─── */
+    /* ── INTRO ── */
     #intro {
       position: absolute;
-      top: 4.5vh;
+      top: 65px;
       left: 50%;
       transform: translateX(-50%);
       font-family: 'ClarelSerif', Georgia, serif;
-      font-size: clamp(10px, 1.15vw, 14px);
+      font-size: 22px;
       text-align: center;
       letter-spacing: 0.04em;
       line-height: 1.6;
       white-space: nowrap;
       color: var(--brown);
-      opacity: 1;
     }
 
-    /* ─── LOGO ─── */
+    /* ── LOGO ── */
     #logo {
       position: absolute;
       left: 50%;
@@ -78,11 +77,10 @@
       user-select: none;
       will-change: transform, top, font-size;
     }
-
     #logo .line1 { display: block; }
     #logo .line2 { display: block; font-size: 0.84em; }
 
-    /* ─── EVENT INFO (states 1 & 2 — 4 columns) ─── */
+    /* ── EVENT INFO (states 1 & 2 — 4 columns) ── */
     #event-info {
       position: absolute;
       left: 0;
@@ -90,18 +88,17 @@
       display: flex;
       justify-content: space-around;
       align-items: flex-start;
-      padding: 0 5vw;
+      padding: 0 96px;
       font-family: 'ClarelSerif', Georgia, serif;
-      font-size: clamp(10px, 1.05vw, 14px);
+      font-size: 20px;
       text-align: center;
       line-height: 1.45;
       color: var(--brown);
       will-change: top, opacity;
     }
-
     #event-info > div { flex: 1; }
 
-    /* ─── HEADER S3 (states 3 & 4 — left | logo | right) ─── */
+    /* ── HEADER S3 (states 3 & 4 — left | logo | right) ── */
     #header-s3 {
       position: absolute;
       top: 0;
@@ -110,16 +107,15 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 2.2vh 5vw;
+      padding: 32px 96px;
       font-family: 'ClarelSerif', Georgia, serif;
-      font-size: clamp(10px, 1.05vw, 14px);
+      font-size: 20px;
       line-height: 1.5;
       color: var(--brown);
       opacity: 0;
       pointer-events: none;
       will-change: opacity;
     }
-
     .hs3-left {
       flex: 1;
       text-align: left;
@@ -127,11 +123,7 @@
       flex-direction: column;
       gap: 0.55em;
     }
-
-    .hs3-center {
-      flex: 1.4; /* breathing room for the logo */
-    }
-
+    .hs3-center { flex: 1.4; }
     .hs3-right {
       flex: 1;
       text-align: right;
@@ -141,17 +133,17 @@
       align-items: flex-end;
     }
 
-    /* ─── MANIFESTO ─── */
+    /* ── MANIFESTO ── */
     #manifesto {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
       font-family: 'ClarelSerif', Georgia, serif;
-      font-size: clamp(15px, 1.85vw, 26px);
+      font-size: 44px;
       text-align: center;
-      line-height: 1.7;
-      max-width: 80vw;
+      line-height: 1.85;
+      max-width: 88%;
       width: max-content;
       color: var(--brown);
       opacity: 0;
@@ -159,7 +151,7 @@
       will-change: opacity;
     }
 
-    /* ─── BRUSH STROKE ─── */
+    /* ── BRUSH ── */
     #brush {
       position: absolute;
       left: 4%;
@@ -168,13 +160,13 @@
       will-change: opacity, top;
     }
 
-    /* ─── CURATED LINE ─── */
+    /* ── CURATED ── */
     #curated {
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
       font-family: 'ClarelSerif', Georgia, serif;
-      font-size: clamp(9px, 0.9vw, 12px);
+      font-size: 17px;
       letter-spacing: 0.07em;
       white-space: nowrap;
       color: var(--brown);
@@ -182,7 +174,7 @@
       will-change: opacity;
     }
 
-    /* ─── BOTTOM NAV ─── */
+    /* ── BOTTOM NAV (fixed viewport-width, padding aligned by JS) ── */
     .bottom-nav {
       position: fixed;
       bottom: 0;
@@ -191,30 +183,82 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 2vh 4.5vw;
+      padding: 2vh 86px;
       font-family: 'Elastik', 'ClarelSerif', Georgia, serif;
-      font-size: clamp(11px, 1.2vw, 15px);
+      font-size: clamp(11px, 1.2vw, 24px);
       letter-spacing: 0.18em;
       color: var(--brown);
-      z-index: 1000;
+      background: #ffffff;
+      border-top: 1px solid rgba(74, 24, 16, 0.18);
+      z-index: 9999;
     }
-
     .bottom-nav a {
       color: inherit;
       text-decoration: none;
       transition: opacity 0.2s;
     }
-
     .bottom-nav a:hover { opacity: 0.55; }
 
-    /* Reduced motion: disable scroll animation */
+    /* ════════════════════════════════════════════════
+       MOBILE  (≤ 767px) — fluid layout, no fixed canvas
+       ════════════════════════════════════════════════ */
+    @media (max-width: 767px) {
+
+      .scroll-driver { height: 350vh; }
+
+      #intro {
+        top: 4vh;
+        font-size: 3.4vw;
+        white-space: normal;
+        width: 80vw;
+      }
+
+      #event-info {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        padding: 0 6vw;
+        gap: 1.5vw 3vw;
+        font-size: 3.5vw;
+      }
+      #event-info > div { flex: none; }
+
+      #header-s3 {
+        padding: 4vw 5vw;
+        font-size: 4vw;
+        align-items: flex-start;
+      }
+      .hs3-center { flex: 1; }
+
+      #manifesto {
+        font-size: 6vw;
+        line-height: 1.35;
+        width: 90vw;
+        max-width: 90vw;
+      }
+
+      #brush { display: none; }
+
+      #curated {
+        font-size: 3vw;
+        white-space: normal;
+        text-align: center;
+        width: 80vw;
+        line-height: 1.6;
+      }
+
+      .bottom-nav {
+        font-size: 5vw;
+        letter-spacing: 0.1em;
+        padding: 3vw 6vw;
+      }
+    }
+
     @media (prefers-reduced-motion: reduce) {
-      .stage { background-color: var(--cream) !important; }
-      #intro,
-      #manifesto,
-      #brush,
-      #curated { opacity: 1 !important; position: static !important; transform: none !important; }
-      #logo { font-size: 14vw !important; position: static !important; }
+      .stage { background-color: var(--cream) !important; transform: none !important; }
+      #intro, #manifesto, #brush, #curated {
+        opacity: 1 !important; position: static !important; transform: none !important;
+      }
+      #logo { font-size: 20vw !important; position: static !important; }
       #event-info { position: static !important; }
       .scroll-driver { height: auto; }
     }
@@ -222,25 +266,20 @@
 </head>
 <body>
 
-  <!-- Tall element that drives scroll progress -->
   <div class="scroll-driver" aria-hidden="true"></div>
 
-  <!-- Fixed stage -->
   <div class="stage" id="stage">
 
-    <!-- State 1: top intro sentence -->
-    <div id="intro" aria-label="Bouche et Terre is genuinely curated by the soil and soul of Ceci est Passata & Le Monde des Mille Couleurs">
+    <div id="intro" aria-label="Bouche et Terre is genuinely curated by the soil and soul of Ceci est Passata &amp; Le Monde des Mille Couleurs">
       Bouche et Terre is genuinely curated by the soil and soul of<br>
       Ceci est Passata &amp; Le Monde des Mille Couleurs
     </div>
 
-    <!-- Calligraphic logo -->
     <div id="logo" role="img" aria-label="Bouche et Terre">
       <span class="line1">Bouche</span>
       <span class="line2">et terre</span>
     </div>
 
-    <!-- Event metadata — states 1 & 2 (4 columns at bottom → top) -->
     <div id="event-info">
       <div>Wonder Wilder<br>Farmer Fest</div>
       <div>Sunday 4.10.26<br>10H &mdash; 17H</div>
@@ -248,7 +287,6 @@
       <div>Zweerstraat 6<br>8900 Dikkebus</div>
     </div>
 
-    <!-- Header — states 3 & 4 (left group | logo | right group) -->
     <div id="header-s3" aria-hidden="true">
       <div class="hs3-left">
         <div>Wonder Wilder<br>Farmer Fest</div>
@@ -261,7 +299,6 @@
       </div>
     </div>
 
-    <!-- Organic brush stroke SVG -->
     <svg id="brush" viewBox="0 0 1200 90" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
       <defs>
         <filter id="grain" x="-5%" y="-40%" width="110%" height="180%">
@@ -269,19 +306,12 @@
           <feDisplacementMap in="SourceGraphic" in2="noise" scale="4.5" xChannelSelector="R" yChannelSelector="G"/>
         </filter>
       </defs>
-      <!-- Primary thick stroke -->
-      <path
-        d="M 18 45 C 80 22, 170 62, 280 40 C 390 20, 480 58, 590 42 C 700 26, 790 60, 900 44 C 990 30, 1080 56, 1182 40"
-        stroke="#4a1810" stroke-width="24" stroke-linecap="round" fill="none"
-        opacity="0.88" filter="url(#grain)"/>
-      <!-- Secondary thinner shadow stroke -->
-      <path
-        d="M 22 54 C 110 36, 200 65, 320 50 C 440 35, 530 62, 640 51 C 750 40, 840 64, 950 52 C 1040 43, 1130 58, 1185 50"
-        stroke="#4a1810" stroke-width="10" stroke-linecap="round" fill="none"
-        opacity="0.30" filter="url(#grain)"/>
+      <path d="M 18 45 C 80 22, 170 62, 280 40 C 390 20, 480 58, 590 42 C 700 26, 790 60, 900 44 C 990 30, 1080 56, 1182 40"
+        stroke="#4a1810" stroke-width="24" stroke-linecap="round" fill="none" opacity="0.88" filter="url(#grain)"/>
+      <path d="M 22 54 C 110 36, 200 65, 320 50 C 440 35, 530 62, 640 51 C 750 40, 840 64, 950 52 C 1040 43, 1130 58, 1185 50"
+        stroke="#4a1810" stroke-width="10" stroke-linecap="round" fill="none" opacity="0.30" filter="url(#grain)"/>
     </svg>
 
-    <!-- Manifesto text (center) -->
     <div id="manifesto">
       Bouche et Terre is not a festival you attend.<br>
       It&rsquo;s one you digest. Vertraag. Maak je handen vuil. Eet<br>
@@ -292,21 +322,18 @@
       terre a encore des choses &agrave; dire.
     </div>
 
-    <!-- Curated byline -->
     <div id="curated">
       Curated by Ceci est Passata &amp; Le Monde des Mille Couleurs
     </div>
 
   </div>
 
-  <!-- Fixed bottom nav -->
-  <nav class="bottom-nav" aria-label="Main navigation">
+  <nav class="bottom-nav" id="bottom-nav" aria-label="Main navigation">
     <a href="#programma">PROGRAMMA</a>
     <a href="#tickets">TICKETS</a>
   </nav>
 
   <script>
-    // ── Elements ──────────────────────────────────────────────────────────────
     const stage     = document.getElementById('stage');
     const logo      = document.getElementById('logo');
     const intro     = document.getElementById('intro');
@@ -315,90 +342,123 @@
     const manifesto = document.getElementById('manifesto');
     const brush     = document.getElementById('brush');
     const curated   = document.getElementById('curated');
+    const bottomNav = document.getElementById('bottom-nav');
+
+    const mob = () => window.innerWidth < 768;
+
+    // ── Stage scaling ─────────────────────────────────────────────────────────
+    function resizeStage() {
+      if (mob()) {
+        // Mobile: fluid, full viewport — no fixed canvas
+        stage.style.width     = '100%';
+        stage.style.height    = '100dvh';
+        stage.style.transform = 'none';
+        const sidePad = window.innerWidth * 0.06;
+        bottomNav.style.bottom       = '0px';
+        bottomNav.style.paddingLeft  = `${sidePad}px`;
+        bottomNav.style.paddingRight = `${sidePad}px`;
+      } else {
+        // Desktop: fixed 1920×1440 (4:3) canvas, scaled to fit
+        stage.style.width  = '1920px';
+        stage.style.height = '1440px';
+        const scale = Math.min(window.innerWidth / 1920, window.innerHeight / 1440);
+        const ox = (window.innerWidth  - 1920 * scale) / 2;
+        const oy = (window.innerHeight - 1440 * scale) / 2;
+        stage.style.transform        = `translate(${ox}px, ${oy}px) scale(${scale})`;
+        bottomNav.style.bottom       = `${oy}px`;
+        bottomNav.style.paddingLeft  = `${Math.max(16, ox + 86 * scale)}px`;
+        bottomNav.style.paddingRight = `${Math.max(16, ox + 86 * scale)}px`;
+      }
+    }
+    window.addEventListener('resize', resizeStage);
+    resizeStage();
 
     // ── Helpers ───────────────────────────────────────────────────────────────
     function clamp(v, lo, hi) { return Math.max(lo, Math.min(hi, v)); }
     function lerp(a, b, t)    { return a + (b - a) * clamp(t, 0, 1); }
-
-    // Smooth ease-in-out
     function ease(t) {
       t = clamp(t, 0, 1);
       return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
     }
-
-    // Segment helper: progress within a [lo, hi] band (0→1)
     function seg(p, lo, hi) { return ease((p - lo) / (hi - lo)); }
 
-    // Parse color into {r,g,b}
-    const cream = { r: 224, g: 232, b: 168 }; // #e0e8a8
-    const peach = { r: 240, g: 184, b: 160 }; // #f0b8a0
-
+    const cream = { r: 240, g: 255, b: 168 };
+    const peach = { r: 255, g: 191, b: 191 };
     function lerpColor(a, b, t) {
       return `rgb(${Math.round(lerp(a.r,b.r,t))},${Math.round(lerp(a.g,b.g,t))},${Math.round(lerp(a.b,b.b,t))})`;
     }
 
-    // ── Animation States ──────────────────────────────────────────────────────
-    /*
-      State 1 (p = 0):    Hero poster   — big logo, event info at bottom
-      State 2 (p = 0.33): Logo overlays — logo over manifesto, event info at top
-      State 3 (p = 0.66): Header shrink — small logo, manifesto readable, brush visible
-      State 4 (p = 1.00): Same layout, background shifts to peach
-    */
-
-    // Values: [s1, s2, s3, s4]
+    // ── Animation values ──────────────────────────────────────────────────────
+    // Desktop: px at 1920×1440  |  Mobile _vw/_vh: multiply by vw/vh at runtime
     const V = {
-      logoFS:          [20,    17,     7,     7     ], // vw
-      logoTop:         [28,    20,     1.5,   1.5   ], // vh
-      eventTop:        [78,    2.5,    2.5,   2.5   ], // vh
-      eventInfoOp:     [1,     1,      0,     0     ],
-      headerS3Op:      [0,     0,      1,     1     ],
-      introOp:         [1,     0,      0,     0     ],
-      manifestoOp:     [0,     1,      1,     1     ],
-      brushOp:         [0,     0,      1,     1     ],
-      brushTop:        [70,    70,     67,    67    ], // vh
-      curatedOp:       [0,     1,      1,     1     ],
-      curatedBottom:   [12,    12,     12,    12    ], // vh
+      // Desktop px
+      logoFS:          [384,   326,   134,   134  ],
+      logoTop:         [288,   288,   22,    22   ],
+      eventTop:        [1123,  36,    36,    36   ],
+      brushTop:        [1051,  1051,  1094,  1094 ],
+      curatedBottom:   [173,   173,   173,   173  ],
+      // Mobile viewport units (×vw or ×vh)
+      logoFS_vw:       [30,    24,    10,    10   ],
+      logoTop_vh:      [22,    18,    3,     3    ],
+      eventTop_vh:     [68,    3,     3,     3    ],
+      brushTop_vh:     [68,    68,    74,    74   ],
+      curatedBot_vh:   [10,    10,    10,    10   ],
+      // Shared opacities
+      eventInfoOp:     [1,     1,     0,     0    ],
+      headerS3Op:      [0,     0,     1,     1    ],
+      introOp:         [1,     0,     0,     0    ],
+      manifestoOp:     [0,     1,     1,     1    ],
+      brushOp:         [0,     0,     1,     1    ],
+      curatedOp:       [0,     1,     1,     1    ],
     };
 
     function interp(key, p) {
       const v = V[key];
-      if (p <= 0)        return v[0];
-      if (p <= 0.33)     return lerp(v[0], v[1], seg(p, 0,    0.33));
-      if (p <= 0.66)     return lerp(v[1], v[2], seg(p, 0.33, 0.66));
-      return             lerp(v[2], v[3], seg(p, 0.66, 1.0));
+      if (p <= 0)    return v[0];
+      if (p <= 0.33) return lerp(v[0], v[1], seg(p, 0,    0.33));
+      if (p <= 0.66) return lerp(v[1], v[2], seg(p, 0.33, 0.66));
+      return               lerp(v[2], v[3], seg(p, 0.66, 1.0));
     }
 
     // ── Main update ───────────────────────────────────────────────────────────
     let rafId = null;
-    let lastScrollY = -1;
 
     function update() {
       rafId = null;
       const scrollY   = window.scrollY;
       const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
       const p         = maxScroll > 0 ? clamp(scrollY / maxScroll, 0, 1) : 0;
+      const m         = mob();
+      const vw        = window.innerWidth  / 100;
+      const vh        = window.innerHeight / 100;
 
-      // Background colour (cream → peach in segment 3 → 4)
-      const bgT = seg(p, 0.66, 1.0);
-      stage.style.backgroundColor = lerpColor(cream, peach, bgT);
+      // Background (fills both stage and body letterbox)
+      const bg = lerpColor(cream, peach, seg(p, 0.66, 1.0));
+      stage.style.backgroundColor      = bg;
+      document.body.style.backgroundColor = bg;
 
       // Logo
-      const lFS  = interp('logoFS',  p);
-      const lTop = interp('logoTop', p);
-      logo.style.fontSize = `${lFS}vw`;
-      logo.style.top      = `${lTop}vh`;
+      logo.style.fontSize = m
+        ? `${interp('logoFS_vw', p) * vw}px`
+        : `${interp('logoFS',    p)}px`;
+      logo.style.top = m
+        ? `${interp('logoTop_vh', p) * vh}px`
+        : `${interp('logoTop',    p)}px`;
 
       // Intro
       intro.style.opacity = interp('introOp', p);
 
-      // Event info (states 1 & 2) ↔ Header S3 (states 3 & 4) cross-fade
+      // Event info
       const evOp = interp('eventInfoOp', p);
-      eventInfo.style.opacity      = evOp;
+      eventInfo.style.opacity       = evOp;
       eventInfo.style.pointerEvents = evOp > 0.1 ? 'auto' : 'none';
-      eventInfo.style.top          = `${interp('eventTop', p)}vh`;
+      eventInfo.style.top = m
+        ? `${interp('eventTop_vh', p) * vh}px`
+        : `${interp('eventTop',    p)}px`;
 
+      // Header S3
       const h3Op = interp('headerS3Op', p);
-      headerS3.style.opacity      = h3Op;
+      headerS3.style.opacity       = h3Op;
       headerS3.style.pointerEvents = h3Op > 0.1 ? 'auto' : 'none';
 
       // Manifesto
@@ -406,24 +466,22 @@
 
       // Brush
       brush.style.opacity = interp('brushOp', p);
-      brush.style.top     = `${interp('brushTop', p)}vh`;
+      brush.style.top = m
+        ? `${interp('brushTop_vh', p) * vh}px`
+        : `${interp('brushTop',    p)}px`;
 
       // Curated
       curated.style.opacity = interp('curatedOp', p);
-      curated.style.bottom  = `${interp('curatedBottom', p)}vh`;
-
-      lastScrollY = scrollY;
+      curated.style.bottom = m
+        ? `${interp('curatedBot_vh', p) * vh}px`
+        : `${interp('curatedBottom', p)}px`;
     }
 
     function onScroll() {
-      if (rafId === null) {
-        rafId = requestAnimationFrame(update);
-      }
+      if (rafId === null) rafId = requestAnimationFrame(update);
     }
 
     window.addEventListener('scroll', onScroll, { passive: true });
-
-    // Initial paint
     update();
   </script>
 </body>
