@@ -31,9 +31,9 @@
 | Element | Size | Line height | Alignment | Top | Bottom | Transform |
 |---|---|---|---|---|---|---|
 | `#intro` | 4vw | 1.2 | center | 4vh | — | `translateX(-50%)` |
-| `#event-info` | 4vw | 1.2 | center (2-col grid) | JS-animated | — | — |
+| `#event-info` | 4vw | 1.2 | center (2-col grid) | JS-animated | 15vh | — |
 | `#header-s3` | 4vw | 1.2 | left / right | 0 | — | — |
-| `#manifesto` | 5vw | 1.35 | center | auto | calc(10vh + 1vw) | `translateX(-50%)` |
+| `#manifesto` | 5vw | 1.35 | center | auto | calc(10vh + 10vw) | `translateX(-50%)` |
 | `#curated` | 3vw | 1.6 | center | — | JS-animated | `translateX(-50%)` |
 | `.bottom-nav` | 5vw | 0 | space-between | — | 0 | — |
 | `#logo` (reduced motion) | 20vw | 0.88 | center | — | — | none |
