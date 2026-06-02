@@ -78,7 +78,7 @@
       will-change: transform, top, font-size;
     }
     #logo .line1 { display: block; }
-    #logo .line2 { display: block; font-size: 0.84em; }
+    #logo .line2 { display: block; font-size: 0.84em; line-height: 0; }
 
     /* ── EVENT INFO (states 1 & 2 — 4 columns) ── */
     #event-info {
@@ -110,7 +110,7 @@
       padding: 32px 96px;
       font-family: 'ClarelSerif', Georgia, serif;
       font-size: 35px;
-      line-height: 1.35;
+      line-height: 5px;
       color: var(--brown);
       opacity: 0;
       pointer-events: none;
@@ -167,6 +167,7 @@
       transform: translateX(-50%);
       font-family: 'ClarelSerif', Georgia, serif;
       font-size: 35px;
+      line-height: 0;
       letter-spacing: 0.07em;
       white-space: nowrap;
       color: var(--brown);
@@ -186,6 +187,7 @@
       padding: 2vh 86px;
       font-family: 'Elastik', 'ClarelSerif', Georgia, serif;
       font-size: clamp(11px, 1.2vw, 48px);
+      line-height: 0;
       letter-spacing: 0.18em;
       color: var(--brown);
       background: #ffffff;
