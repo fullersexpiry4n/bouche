@@ -31,7 +31,7 @@
 | Element | Size | Line height | Alignment | Top | Bottom | Transform |
 |---|---|---|---|---|---|---|
 | `#intro` | 4vw | 1.2 | center | 4vh | — | `translateX(-50%)` |
-| `#event-info` | 4vw | 1.2 | center (2-col grid) | JS-animated | 15vh | — |
+| `#event-info` | 4vw | 1.2 | center (2-col grid) | JS-animated (85vh → 3vh) | 0 | — |
 | `#header-s3` | 4vw | 1.2 | left / right | 0 | — | — |
 | `#manifesto` | 5vw | 1.35 | center | auto | calc(10vh + 10vw) | `translateX(-50%)` |
 | `#curated` | 3vw | 1.6 | center | — | JS-animated | `translateX(-50%)` |
