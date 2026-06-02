@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bouche et Terre — Wonder Wilder Farmer Fest</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+  <style>
+    @font-face {
+      font-family: 'ClarelSerif';
+      src: url('fonts/ClarelSerif-Regular.otf') format('opentype');
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Elastik';
+      src: url('fonts/Elastik-C.otf') format('opentype');
+      font-display: swap;
+    }
+
+    :root {
+      --brown: #4a1810;
+      --cream: #e0e8a8;
+      --peach: #f0b8a0;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--cream);
+      color: var(--brown);
+      overflow-x: hidden;
+    }
+
+    /* Tall scroll space drives the animation */
+    .scroll-driver {
+      height: 400vh;
+    }
+
+    /* Fixed stage — all content lives here */
+    .stage {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      background-color: var(--cream);
+      will-change: background-color;
+    }
+
+    /* ─── INTRO (top, state 1 only) ─── */
+    #intro {
+      position: absolute;
+      top: 4.5vh;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'ClarelSerif', Georgia, serif;
+      font-size: clamp(10px, 1.15vw, 14px);
+      text-align: center;
+      letter-spacing: 0.04em;
+      line-height: 1.6;
+      white-space: nowrap;
+      color: var(--brown);
+      opacity: 1;
+    }
+
+    /* ─── LOGO ─── */
+    #logo {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Dancing Script', cursive;
+      font-weight: 700;
+      color: var(--brown);
+      text-align: center;
+      line-height: 0.88;
+      white-space: nowrap;
+      z-index: 20;
+      user-select: none;
+      will-change: transform, top, font-size;
+    }
+
+    #logo .line1 { display: block; }
+    #logo .line2 { display: block; font-size: 0.84em; }
+
+    /* ─── EVENT INFO ─── */
+    #event-info {
+      position: absolute;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-start;
+      padding: 0 5vw;
+      font-family: 'ClarelSerif', Georgia, serif;
+      font-size: clamp(10px, 1.05vw, 14px);
+      text-align: center;
+      line-height: 1.45;
+      color: var(--brown);
+      will-change: top;
+    }
+
+    #event-info > div { flex: 1; }
+
+    /* ─── MANIFESTO ─── */
+    #manifesto {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: 'ClarelSerif', Georgia, serif;
+      font-size: clamp(15px, 1.85vw, 26px);
+      text-align: center;
+      line-height: 1.7;
+      max-width: 80vw;
+      width: max-content;
+      color: var(--brown);
+      opacity: 0;
+      z-index: 10;
+      will-change: opacity;
+    }
+
+    /* ─── BRUSH STROKE ─── */
+    #brush {
+      position: absolute;
+      left: 4%;
+      width: 92%;
+      opacity: 0;
+      will-change: opacity, top;
+    }
+
+    /* ─── CURATED LINE ─── */
+    #curated {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'ClarelSerif', Georgia, serif;
+      font-size: clamp(9px, 0.9vw, 12px);
+      letter-spacing: 0.07em;
+      white-space: nowrap;
+      color: var(--brown);
+      opacity: 0;
+      will-change: opacity;
+    }
+
+    /* ─── BOTTOM NAV ─── */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 2vh 4.5vw;
+      font-family: 'Elastik', 'ClarelSerif', Georgia, serif;
+      font-size: clamp(11px, 1.2vw, 15px);
+      letter-spacing: 0.18em;
+      color: var(--brown);
+      z-index: 1000;
+    }
+
+    .bottom-nav a {
+      color: inherit;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .bottom-nav a:hover { opacity: 0.55; }
+
+    /* Reduced motion: disable scroll animation */
+    @media (prefers-reduced-motion: reduce) {
+      .stage { background-color: var(--cream) !important; }
+      #intro,
+      #manifesto,
+      #brush,
+      #curated { opacity: 1 !important; position: static !important; transform: none !important; }
+      #logo { font-size: 14vw !important; position: static !important; }
+      #event-info { position: static !important; }
+      .scroll-driver { height: auto; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Tall element that drives scroll progress -->
+  <div class="scroll-driver" aria-hidden="true"></div>
+
+  <!-- Fixed stage -->
+  <div class="stage" id="stage">
+
+    <!-- State 1: top intro sentence -->
+    <div id="intro" aria-label="Bouche et Terre is genuinely curated by the soil and soul of Ceci est Passata & Le Monde des Mille Couleurs">
+      Bouche et Terre is genuinely curated by the soil and soul of<br>
+      Ceci est Passata &amp; Le Monde des Mille Couleurs
+    </div>
+
+    <!-- Calligraphic logo -->
+    <div id="logo" role="img" aria-label="Bouche et Terre">
+      <span class="line1">Bouche</span>
+      <span class="line2">et terre</span>
+    </div>
+
+    <!-- Event metadata -->
+    <div id="event-info">
+      <div>Wonder Wilder<br>Farmer Fest</div>
+      <div>Sunday 4.10.26<br>10H &mdash; 17H</div>
+      <div>Le Monde<br>des Mille Couleurs</div>
+      <div>Zweerstraat 6<br>8900 Dikkebus</div>
+    </div>
+
+    <!-- Organic brush stroke SVG -->
+    <svg id="brush" viewBox="0 0 1200 90" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+      <defs>
+        <filter id="grain" x="-5%" y="-40%" width="110%" height="180%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.035 0.08" numOctaves="4" seed="8" result="noise"/>
+          <feDisplacementMap in="SourceGraphic" in2="noise" scale="4.5" xChannelSelector="R" yChannelSelector="G"/>
+        </filter>
+      </defs>
+      <!-- Primary thick stroke -->
+      <path
+        d="M 18 45 C 80 22, 170 62, 280 40 C 390 20, 480 58, 590 42 C 700 26, 790 60, 900 44 C 990 30, 1080 56, 1182 40"
+        stroke="#4a1810" stroke-width="24" stroke-linecap="round" fill="none"
+        opacity="0.88" filter="url(#grain)"/>
+      <!-- Secondary thinner shadow stroke -->
+      <path
+        d="M 22 54 C 110 36, 200 65, 320 50 C 440 35, 530 62, 640 51 C 750 40, 840 64, 950 52 C 1040 43, 1130 58, 1185 50"
+        stroke="#4a1810" stroke-width="10" stroke-linecap="round" fill="none"
+        opacity="0.30" filter="url(#grain)"/>
+    </svg>
+
+    <!-- Manifesto text (center) -->
+    <div id="manifesto">
+      Bouche et Terre is not a festival you attend.<br>
+      It&rsquo;s one you digest. Vertraag. Maak je handen vuil. Eet<br>
+      iets echts. We&rsquo;re talking soil under your nails, smoke<br>
+      in your hair and flavours that make you forget what<br>
+      a supermarket looks like. One day of wildfarming,<br>
+      handcraft, son et lumi&egrave;re &mdash; on a living field where la<br>
+      terre a encore des choses &agrave; dire.
+    </div>
+
+    <!-- Curated byline -->
+    <div id="curated">
+      Curated by Ceci est Passata &amp; Le Monde des Mille Couleurs
+    </div>
+
+  </div>
+
+  <!-- Fixed bottom nav -->
+  <nav class="bottom-nav" aria-label="Main navigation">
+    <a href="#programma">PROGRAMMA</a>
+    <a href="#tickets">TICKETS</a>
+  </nav>
+
+  <script>
+    // ── Elements ──────────────────────────────────────────────────────────────
+    const stage     = document.getElementById('stage');
+    const logo      = document.getElementById('logo');
+    const intro     = document.getElementById('intro');
+    const eventInfo = document.getElementById('event-info');
+    const manifesto = document.getElementById('manifesto');
+    const brush     = document.getElementById('brush');
+    const curated   = document.getElementById('curated');
+
+    // ── Helpers ───────────────────────────────────────────────────────────────
+    function clamp(v, lo, hi) { return Math.max(lo, Math.min(hi, v)); }
+    function lerp(a, b, t)    { return a + (b - a) * clamp(t, 0, 1); }
+
+    // Smooth ease-in-out
+    function ease(t) {
+      t = clamp(t, 0, 1);
+      return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+    }
+
+    // Segment helper: progress within a [lo, hi] band (0→1)
+    function seg(p, lo, hi) { return ease((p - lo) / (hi - lo)); }
+
+    // Parse color into {r,g,b}
+    const cream = { r: 224, g: 232, b: 168 }; // #e0e8a8
+    const peach = { r: 240, g: 184, b: 160 }; // #f0b8a0
+
+    function lerpColor(a, b, t) {
+      return `rgb(${Math.round(lerp(a.r,b.r,t))},${Math.round(lerp(a.g,b.g,t))},${Math.round(lerp(a.b,b.b,t))})`;
+    }
+
+    // ── Animation States ──────────────────────────────────────────────────────
+    /*
+      State 1 (p = 0):    Hero poster   — big logo, event info at bottom
+      State 2 (p = 0.33): Logo overlays — logo over manifesto, event info at top
+      State 3 (p = 0.66): Header shrink — small logo, manifesto readable, brush visible
+      State 4 (p = 1.00): Same layout, background shifts to peach
+    */
+
+    // Values: [s1, s2, s3, s4]
+    const V = {
+      logoFS:          [20,    17,     5.8,   5.8   ], // vw
+      logoTop:         [28,    20,     2,     2     ], // vh
+      eventTop:        [78,    2.5,    2.5,   2.5   ], // vh
+      introOp:         [1,     0,      0,     0     ],
+      manifestoOp:     [0,     1,      1,     1     ],
+      brushOp:         [0,     0,      1,     1     ],
+      brushTop:        [70,    70,     67,    67    ], // vh
+      curatedOp:       [0,     1,      1,     1     ],
+      curatedBottom:   [12,    12,     12,    12    ], // vh
+    };
+
+    function interp(key, p) {
+      const v = V[key];
+      if (p <= 0)        return v[0];
+      if (p <= 0.33)     return lerp(v[0], v[1], seg(p, 0,    0.33));
+      if (p <= 0.66)     return lerp(v[1], v[2], seg(p, 0.33, 0.66));
+      return             lerp(v[2], v[3], seg(p, 0.66, 1.0));
+    }
+
+    // ── Main update ───────────────────────────────────────────────────────────
+    let rafId = null;
+    let lastScrollY = -1;
+
+    function update() {
+      rafId = null;
+      const scrollY   = window.scrollY;
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+      const p         = maxScroll > 0 ? clamp(scrollY / maxScroll, 0, 1) : 0;
+
+      // Background colour (cream → peach in segment 3 → 4)
+      const bgT = seg(p, 0.66, 1.0);
+      stage.style.backgroundColor = lerpColor(cream, peach, bgT);
+
+      // Logo
+      const lFS  = interp('logoFS',  p);
+      const lTop = interp('logoTop', p);
+      logo.style.fontSize = `${lFS}vw`;
+      logo.style.top      = `${lTop}vh`;
+
+      // Intro
+      intro.style.opacity = interp('introOp', p);
+
+      // Event info
+      eventInfo.style.top = `${interp('eventTop', p)}vh`;
+
+      // Manifesto
+      manifesto.style.opacity = interp('manifestoOp', p);
+
+      // Brush
+      brush.style.opacity = interp('brushOp', p);
+      brush.style.top     = `${interp('brushTop', p)}vh`;
+
+      // Curated
+      curated.style.opacity = interp('curatedOp', p);
+      curated.style.bottom  = `${interp('curatedBottom', p)}vh`;
+
+      lastScrollY = scrollY;
+    }
+
+    function onScroll() {
+      if (rafId === null) {
+        rafId = requestAnimationFrame(update);
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    // Initial paint
+    update();
+  </script>
+</body>
+</html>
