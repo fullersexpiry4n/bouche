@@ -14,12 +14,12 @@
 
 | Element | Font family | Size |
 |---|---|---|
-| `#intro` | ClarelSerif | 22px |
+| `#intro` | ClarelSerif | 35px |
 | `#logo` | Dancing Script | JS-animated |
 | `#logo .line2` | Dancing Script | 0.84em (relative to logo) |
 | `#event-info` | ClarelSerif | 20px |
 | `#header-s3` | ClarelSerif | 20px |
-| `#manifesto` | ClarelSerif | 44px |
+| `#manifesto` | ClarelSerif | 66px |
 | `#curated` | ClarelSerif | 17px |
 | `.bottom-nav` | Elastik | clamp(11px, 1.2vw, 24px) |
 
