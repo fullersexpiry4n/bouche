@@ -155,15 +155,6 @@
       will-change: opacity;
     }
 
-    /* ── BRUSH ── */
-    #brush {
-      position: absolute;
-      left: 4%;
-      width: 92%;
-      opacity: 0;
-      will-change: opacity, top;
-    }
-
     /* ── CURATED ── */
     #curated {
       position: absolute;
@@ -249,8 +240,6 @@
         transform: translateX(-50%);
       }
 
-      #brush { display: none; }
-
       #curated {
         font-size: 3vw;
         white-space: normal;
@@ -268,7 +257,7 @@
 
     @media (prefers-reduced-motion: reduce) {
       .stage { background-color: var(--cream) !important; transform: none !important; }
-      #intro, #manifesto, #brush, #curated {
+      #intro, #manifesto, #curated {
         opacity: 1 !important; position: static !important; transform: none !important;
       }
       #logo { width: 80vw !important; position: static !important; }
@@ -310,12 +299,6 @@
       </div>
     </div>
 
-    <svg id="brush" viewBox="0 0 1200 90" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-      <path d="M 18 45 C 80 22, 170 62, 280 40 C 390 20, 480 58, 590 42 C 700 26, 790 60, 900 44 C 990 30, 1080 56, 1182 40"
-        stroke="#4a1810" stroke-width="24" stroke-linecap="round" fill="none" opacity="0.88" filter="url(#grain)"/>
-      <path d="M 22 54 C 110 36, 200 65, 320 50 C 440 35, 530 62, 640 51 C 750 40, 840 64, 950 52 C 1040 43, 1130 58, 1185 50"
-        stroke="#4a1810" stroke-width="10" stroke-linecap="round" fill="none" opacity="0.30" filter="url(#grain)"/>
-    </svg>
 
     <div id="manifesto">
       Bouche et Terre is not a festival you attend.<br>
@@ -346,7 +329,6 @@
     const eventInfo = document.getElementById('event-info');
     const headerS3  = document.getElementById('header-s3');
     const manifesto = document.getElementById('manifesto');
-    const brush     = document.getElementById('brush');
     const curated   = document.getElementById('curated');
     const bottomNav = document.getElementById('bottom-nav');
 
@@ -401,13 +383,11 @@
       logoFS:          [1920,    1920,    1,    1   ],
       logoTop:         [0,    0,    22,    22   ],
       eventTop:        [1123,  36,    36,    36   ],
-      brushTop:        [1920,    1080,    1090,    1090   ],
       curatedBottom:   [173,   173,   173,   173  ],
       // Mobile viewport units (×vw or ×vh)
       logoFS_vw:       [75,    65,    28,    28   ],
       logoTop_vh:      [0,    0,    3,     3    ],
       eventTop_vh:     [78,    3,     3,     3    ],
-      brushTop_vh:     [68,    68,    74,    74   ],
       curatedBot_vh:   [15,    15,    15,    15   ],
       // Logo opacities
       logo1Op:         [1,     1,     0,     0    ],
@@ -417,7 +397,6 @@
       headerS3Op:      [0,     0,     1,     1    ],
       introOp:         [1,     0,     0,     0    ],
       manifestoOp:     [0,     1,     1,     1    ],
-      brushOp:         [0,     0,     1,     1    ],
       curatedOp:       [0,     1,     1,     1    ],
     };
 
@@ -476,12 +455,6 @@
 
       // Manifesto
       manifesto.style.opacity = interp('manifestoOp', p);
-
-      // Brush
-      brush.style.opacity = interp('brushOp', p);
-      brush.style.top = m
-        ? `${interp('brushTop_vh', p) * vh}px`
-        : `${interp('brushTop',    p)}px`;
 
       // Curated
       curated.style.opacity = interp('curatedOp', p);
