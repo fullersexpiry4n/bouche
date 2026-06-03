@@ -15,7 +15,7 @@
 | Element | Text | Font family | Size | Line height | Alignment | Top | Bottom | Transform |
 |---|---|---|---|---|---|---|---|---|
 | `#intro` | "Bouche et Terre is genuinely…" | ClarelSerif | 28px | 36.6px | center | 18px | — | `translateX(-50%)` |
-| `#logo` | "Bouche et terre" | PNG image (`1.png`) | JS-animated width (1100→950→430px) | — | center | JS-animated (300→300→22px) | — | `translateX(-50%)` |
+| `#logo` | "Bouche et terre" | PNG image (`1.png`) | JS-animated width (1920→1920→1px) | — | center | 70vh default; JS-animated (1008→1008→22px desktop / 70→70→3vh mobile) | — | `translateX(-50%)` |
 | `#event-info` | "Wonder Wilder Farmer Fest Sunday…" | ClarelSerif | 35px | 40px | center (4 cols, space-around) | JS-animated | — | — |
 | `#header-s3 .hs3-left` | "Wonder Wilder Farmer Fest Sunday…" | ClarelSerif | 35px | 40px | center | 0 | — | — |
 | `#header-s3 .hs3-right` | "Le Monde des Mille Couleurs…" | ClarelSerif | 35px | 40px | center | 0 | — | — |

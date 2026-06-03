@@ -63,17 +63,25 @@
     }
 
     /* ── LOGO ── */
-    #logo {
+    #logo, #logo2 {
       position: absolute;
       left: 50%;
-      width: 1100px;
-      top: 300px;
       transform: translateX(-50%);
       display: block;
       mix-blend-mode: multiply;
       z-index: 20;
       user-select: none;
-      will-change: transform, top, width;
+    }
+    #logo {
+      width: 1920px;
+      top: 0px;
+      will-change: transform, top, width, opacity;
+    }
+    #logo2 {
+      width: 1920px;
+      top: 0px;
+      opacity: 0;
+      will-change: opacity;
     }
 
     /* ── EVENT INFO (states 1 & 2 — 4 columns) ── */
@@ -281,6 +289,7 @@
     </div>
 
     <img id="logo" src="1.png" alt="Bouche et Terre">
+  <img id="logo2" src="3.png" alt="Bouche et Terre">
 
     <div id="event-info">
       <div>Wonder Wilder<br>Farmer Fest</div>
@@ -302,12 +311,6 @@
     </div>
 
     <svg id="brush" viewBox="0 0 1200 90" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-      <defs>
-        <filter id="grain" x="-5%" y="-40%" width="110%" height="180%">
-          <feTurbulence type="fractalNoise" baseFrequency="0.035 0.08" numOctaves="4" seed="8" result="noise"/>
-          <feDisplacementMap in="SourceGraphic" in2="noise" scale="4.5" xChannelSelector="R" yChannelSelector="G"/>
-        </filter>
-      </defs>
       <path d="M 18 45 C 80 22, 170 62, 280 40 C 390 20, 480 58, 590 42 C 700 26, 790 60, 900 44 C 990 30, 1080 56, 1182 40"
         stroke="#4a1810" stroke-width="24" stroke-linecap="round" fill="none" opacity="0.88" filter="url(#grain)"/>
       <path d="M 22 54 C 110 36, 200 65, 320 50 C 440 35, 530 62, 640 51 C 750 40, 840 64, 950 52 C 1040 43, 1130 58, 1185 50"
@@ -338,6 +341,7 @@
   <script>
     const stage     = document.getElementById('stage');
     const logo      = document.getElementById('logo');
+    const logo2     = document.getElementById('logo2');
     const intro     = document.getElementById('intro');
     const eventInfo = document.getElementById('event-info');
     const headerS3  = document.getElementById('header-s3');
@@ -394,17 +398,20 @@
     // Desktop: px at 1920×1440  |  Mobile _vw/_vh: multiply by vw/vh at runtime
     const V = {
       // Desktop px (logoFS = image width)
-      logoFS:          [1920,    1440,    1,    1   ],
-      logoTop:         [0,    ,    22,    22   ],
+      logoFS:          [1920,    1920,    1,    1   ],
+      logoTop:         [0,    0,    22,    22   ],
       eventTop:        [1123,  36,    36,    36   ],
-      brushTop:        [1051,  1051,  1094,  1094 ],
+      brushTop:        [1920,    1080,    1090,    1090   ],
       curatedBottom:   [173,   173,   173,   173  ],
       // Mobile viewport units (×vw or ×vh)
       logoFS_vw:       [75,    65,    28,    28   ],
-      logoTop_vh:      [22,    18,    3,     3    ],
+      logoTop_vh:      [0,    0,    3,     3    ],
       eventTop_vh:     [78,    3,     3,     3    ],
       brushTop_vh:     [68,    68,    74,    74   ],
       curatedBot_vh:   [15,    15,    15,    15   ],
+      // Logo opacities
+      logo1Op:         [1,     1,     0,     0    ],
+      logo2Op:         [0,     0,     1,     1    ],
       // Shared opacities
       eventInfoOp:     [1,     1,     0,     0    ],
       headerS3Op:      [0,     0,     1,     1    ],
@@ -439,13 +446,17 @@
       stage.style.backgroundColor      = bg;
       document.body.style.backgroundColor = bg;
 
-      // Logo
+      // Logo 1 (pages 1–2)
       logo.style.width = m
         ? `${interp('logoFS_vw', p) * vw}px`
         : `${interp('logoFS',    p)}px`;
       logo.style.top = m
         ? `${interp('logoTop_vh', p) * vh}px`
         : `${interp('logoTop',    p)}px`;
+      logo.style.opacity = interp('logo1Op', p);
+
+      // Logo 2 (pages 3–4)
+      logo2.style.opacity = interp('logo2Op', p);
 
       // Intro
       intro.style.opacity = interp('introOp', p);
