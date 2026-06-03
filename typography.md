@@ -32,9 +32,9 @@
 |---|---|---|---|---|---|---|---|
 | `#intro` | "Bouche et Terre is genuinely…" | 4vw | 1.3 | center | 4vh | — | `translateX(-50%)` |
 | `#event-info` | "Wonder Wilder Farmer Fest Sunday…" | 4vw | 1.2 | center (2-col grid) | JS-animated (75vh → 3vh) | — | — |
-| `#header-s3` | "Wonder Wilder Farmer Fest / Le…" | 4vw | 1.25 | left / right | 3vh | — | — |
-| `.hs3-logo-mob` (bouche_logo.png — S3/S4) | "Bouche et terre" | 100% | — | — | 10vh | — | — |
-| `#manifesto` | "Bouche et Terre is not…" | 4.5vw | 1.3 | center | 50% | auto | `translate(-50%, -50%)` |
+| `#header-s3` | "Wonder Wilder Farmer Fest / Le…" | 4vw | 1.25 | left / right | 8vh | — | — |
+| `.hs3-logo-mob` (bouche_logo.png — S3/S4) | "Bouche et terre" | 100% | — | — | 8vh | — | — |
+| `#manifesto` | "Bouche et Terre is not…" | 4.5vw | 1.3 | center | 50% | auto | `translate(-50%, -50%)` — `<br>` hidden |
 | `#manifesto-streep` | Brown brush-stroke PNG below manifesto | 100vw | — | — | — | `margin-top: 0.6em` | `left:50% translateX(-50%)` |
 | `#curated` | "Curated by Ceci est Passata…" | 4vw | 1.6 | center | — | JS-animated (6vh) | `translateX(-50%)` |
 | `.bottom-nav` | "PROGRAMMA TICKETS" | 5vw | — | space-between | — | 0 | — |
@@ -46,9 +46,9 @@
 |---|---|---|---|---|---|---|---|
 | `#intro` | "Bouche et Terre is genuinely…" | 2.6vw | 1.2 | center | 3vh | — | `translateX(-50%)` |
 | `#event-info` | "Wonder Wilder Farmer Fest Sunday…" | 2.8vw | 1.2 | center (2-col grid) | JS-animated | — | — |
-| `#header-s3` | "Wonder Wilder Farmer Fest / Le…" | 2.8vw | 1.25 | left / right | 3vh | — | — |
+| `#header-s3` | "Wonder Wilder Farmer Fest / Le…" | 2.8vw | 1.25 | left / right | 10vh | — | — |
 | `.hs3-logo-mob` (bouche_logo.png — S3/S4) | "Bouche et terre" | 100% | — | — | 10vh | — | — |
-| `#manifesto` | "Bouche et Terre is not…" | 4vw | 1.3 | center | auto | calc(8vh + 4vw) | `translateX(-50%)` |
+| `#manifesto` | "Bouche et Terre is not…" | 4vw | 1.3 | center | 50% | auto | `translate(-50%, -50%)` — `<br>` hidden |
 | `#manifesto-streep` | Brown brush-stroke PNG below manifesto | 100vw | — | — | — | `margin-top: 0.6em` | `left:50% translateX(-50%)` |
 | `#curated` | "Curated by Ceci est Passata…" | 2.2vw | 1.6 | center | — | JS-animated (15vh) | `translateX(-50%)` |
 | `.bottom-nav` | "PROGRAMMA TICKETS" | 2.5vw | — | space-between | — | 0 | — |
