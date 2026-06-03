@@ -204,11 +204,6 @@
 
       .scroll-driver { height: 350vh; }
 
-      #logo2 {
-        width: 100vw;
-        top: 0;
-      }
-
       #intro {
         white-space: normal;
         text-align: center;
@@ -267,6 +262,7 @@
       #manifesto {
         font-size: 4.5vw;
         line-height: 1.3;
+        text-align: center;
         top: 50%;
         bottom: auto;
         transform: translate(-50%, -50%);
@@ -311,6 +307,7 @@
       #manifesto {
         font-size: 4vw;
         line-height: 1.3;
+        text-align: center;
         bottom: calc(8vh + 4vw);
       }
 
@@ -507,8 +504,8 @@
         : `${interp('logoTop',    p)}px`;
       logo.style.opacity = interp('logo1Op', p);
 
-      // Logo 2 (pages 3–4)
-      logo2.style.opacity = interp('logo2Op', p);
+      // Logo 2 (pages 3–4, desktop only)
+      logo2.style.opacity = m ? 0 : interp('logo2Op', p);
 
       // Intro
       intro.style.opacity = interp('introOp', p);

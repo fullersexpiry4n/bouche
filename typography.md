@@ -37,7 +37,6 @@
 | `#curated` | "Curated by Ceci est Passata…" | 4vw | 1.6 | center | — | JS-animated (6vh) | `translateX(-50%)` |
 | `.bottom-nav` | "PROGRAMMA TICKETS" | 5vw | — | space-between | — | 0 | — |
 | `#logo` (fluid) | "Bouche et terre" | 100vw→28vw JS-animated | — | center | 20vh→3vh JS-animated | — | none |
-| `#logo2` (fluid) | "Bouche et terre" | 100vw | — | center | 0 | — | none |
 
 ## Tablet font sizes (768px – 1023px)
 
