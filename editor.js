@@ -115,6 +115,7 @@ const CSS_MAP = {
   m_headers3_padtop:    ['m', '#header-s3',     'padding-top'],
   // Mobile — .hs3-logo-mob
   m_hscenter_width:     ['m', '.hs3-logo-mob',  'width'],
+  m_hscenter_bottom:    ['m', '.hs3-logo-mob',  'bottom'],
   // Mobile + Tablet — #manifesto-streep (CSS in ≤1023px shared block → 'd' context)
   d_streep_margin:      ['d', '#manifesto-streep', 'margin-top'],
   // Mobile — #manifesto
@@ -146,6 +147,7 @@ const CSS_MAP = {
   t_headers3_padtop:    ['t', '#header-s3',      'padding-top'],
   // Tablet — .hs3-logo-mob
   t_hscenter_width:     ['t', '.hs3-logo-mob',   'width'],
+  t_hscenter_bottom:    ['t', '.hs3-logo-mob',   'bottom'],
   // Tablet — #manifesto
   t_manifesto_size:     ['t', '#manifesto',      'font-size'],
   t_manifesto_lh:       ['t', '#manifesto',      'line-height'],
@@ -215,6 +217,96 @@ function applyUpdate(key, value) {
     html = manifestoSet(html, value);
   }
   wr(html);
+}
+
+// ── Generate typography.md from current values ───────────────────────────────
+
+const MD = path.join(DIR, 'typography.md');
+const v  = (vals, k) => vals[k] || '—';
+
+function generateTypographyMd(vals) {
+  const vArr = k => {
+    const raw = vals[k] || '';
+    return raw.split(',').map(s => s.trim()).join(', ');
+  };
+
+  return `# Typography — Bouche et Terre
+
+## Fonts in use
+
+| Font | Role |
+|---|---|
+| ClarelSerif | Body / headings (custom, with Georgia fallback) |
+| Dancing Script | Logo |
+| Elastik | Bottom nav (custom, with ClarelSerif fallback) |
+
+---
+
+## Desktop font sizes
+
+| Element | Text | Font family | Size | Line height | Alignment | Top | Bottom | Transform | Height |
+|---|---|---|---|---|---|---|---|---|---|
+| \`#intro\` | "Bouche et Terre is genuinely…" | ClarelSerif | ${v(vals,'d_intro_size')} | ${v(vals,'d_intro_lh')} | ${v(vals,'d_intro_align')} | ${v(vals,'d_intro_top')} | — | \`translateX(-50%)\` | — |
+| \`#logo\` (S1/S2) | "Bouche et terre" | PNG image (\`1.png\`) | JS-animated width (1920→1920→1px) | — | center | JS-animated top (0→0→22px) | — | \`translateX(-50%)\` | — |
+| \`#logo2\` (S3/S4) | "Bouche et terre" | PNG image (\`3.png\`) | ${v(vals,'d_logo2_width')} | — | center | ${v(vals,'d_logo2_top')} | — | \`translateX(-50%)\` | — |
+| \`#event-info\` | "Wonder Wilder Farmer Fest Sunday…" | ClarelSerif | ${v(vals,'d_eventinfo_size')} | ${v(vals,'d_eventinfo_lh')} | center (4 cols, space-around) | JS-animated (1123→36px) | — | — | — |
+| \`#header-s3 .hs3-left\` | "Wonder Wilder Farmer Fest Sunday…" | ClarelSerif | ${v(vals,'d_headers3_size')} | ${v(vals,'d_headers3_lh')} | center | ${v(vals,'d_headers3_top')} | — | — | — |
+| \`#header-s3 .hs3-right\` | "Le Monde des Mille Couleurs…" | ClarelSerif | ${v(vals,'d_headers3_size')} | ${v(vals,'d_headers3_lh')} | center | ${v(vals,'d_headers3_top')} | — | — | — |
+| \`#manifesto\` | "Bouche et Terre is not…" | ClarelSerif | ${v(vals,'d_manifesto_size')} | ${v(vals,'d_manifesto_lh')} | ${v(vals,'d_manifesto_align')} | — | ${v(vals,'d_manifesto_bottom')} | \`translateX(-50%)\` | — |
+| \`#curated\` | "Curated by Ceci est Passata…" | ClarelSerif | ${v(vals,'d_curated_size')} | ${v(vals,'d_curated_lh')} | center | — | JS-animated (173px) | \`translateX(-50%)\` | — |
+| \`.bottom-nav\` | "PROGRAMMA TICKETS" | Elastik | ${v(vals,'d_botnav_size')} | ${v(vals,'d_botnav_lh')} | space-between | — | 0 | — | ${v(vals,'d_botnav_height')} |
+
+---
+
+## Mobile font sizes (≤ 767px)
+
+| Element | Text | Size | Line height | Alignment | Top | Bottom | Transform |
+|---|---|---|---|---|---|---|---|
+| \`#intro\` | "Bouche et Terre is genuinely…" | ${v(vals,'m_intro_size')} | ${v(vals,'m_intro_lh')} | center | ${v(vals,'m_intro_top')} | — | \`translateX(-50%)\` |
+| \`#event-info\` | "Wonder Wilder Farmer Fest Sunday…" | ${v(vals,'m_eventinfo_size')} | ${v(vals,'m_eventinfo_lh')} | center (2-col grid) | JS-animated (75vh → 3vh) | — | — |
+| \`#header-s3\` | "Wonder Wilder Farmer Fest / Le…" | ${v(vals,'m_headers3_size')} | ${v(vals,'m_headers3_lh')} | left / right | ${v(vals,'m_headers3_top')} | — | — |
+| \`.hs3-logo-mob\` (bouche_logo.png — S3/S4) | "Bouche et terre" | 100% | — | — | — | ${v(vals,'m_hscenter_bottom')} | — |
+| \`#manifesto\` | "Bouche et Terre is not…" | ${v(vals,'m_manifesto_size')} | ${v(vals,'m_manifesto_lh')} | ${v(vals,'m_manifesto_align')} | ${v(vals,'m_manifesto_top')} | ${v(vals,'m_manifesto_bottom')} | \`${v(vals,'m_manifesto_transform')}\` — \`<br>\` hidden |
+| \`#manifesto-streep\` | Brown brush-stroke PNG below manifesto (S3/S4 only) | 100vw | — | — | — | \`margin-top: ${v(vals,'d_streep_margin')}\` | \`left:50% translateX(-50%)\` |
+| \`#curated\` | "Curated by Ceci est Passata…" | ${v(vals,'m_curated_size')} | ${v(vals,'m_curated_lh')} | center | — | JS-animated (6vh) | \`translateX(-50%)\` |
+| \`.bottom-nav\` | "PROGRAMMA TICKETS" | ${v(vals,'m_botnav_size')} | — | space-between | — | 0 | — |
+| \`#logo\` (fluid) | "Bouche et terre" | 100vw→28vw JS-animated | — | center | 20vh→3vh JS-animated | — | none |
+
+## Tablet font sizes (768px – 1023px)
+
+| Element | Text | Size | Line height | Alignment | Top | Bottom | Transform |
+|---|---|---|---|---|---|---|---|
+| \`#intro\` | "Bouche et Terre is genuinely…" | ${v(vals,'t_intro_size')} | ${v(vals,'t_intro_lh')} | center | ${v(vals,'t_intro_top')} | — | \`translateX(-50%)\` |
+| \`#event-info\` | "Wonder Wilder Farmer Fest Sunday…" | ${v(vals,'t_eventinfo_size')} | ${v(vals,'t_eventinfo_lh')} | center (2-col grid) | JS-animated | — | — |
+| \`#header-s3\` | "Wonder Wilder Farmer Fest / Le…" | ${v(vals,'t_headers3_size')} | ${v(vals,'t_headers3_lh')} | left / right | ${v(vals,'t_headers3_top')} | — | — |
+| \`.hs3-logo-mob\` (bouche_logo.png — S3/S4) | "Bouche et terre" | 100% | — | — | — | ${v(vals,'t_hscenter_bottom')} | — |
+| \`#manifesto\` | "Bouche et Terre is not…" | ${v(vals,'t_manifesto_size')} | ${v(vals,'t_manifesto_lh')} | ${v(vals,'t_manifesto_align')} | ${v(vals,'t_manifesto_top')} | ${v(vals,'t_manifesto_bottom')} | \`${v(vals,'t_manifesto_transform')}\` — \`<br>\` hidden |
+| \`#manifesto-streep\` | Brown brush-stroke PNG below manifesto (S3/S4 only) | 100vw | — | — | — | \`margin-top: ${v(vals,'d_streep_margin')}\` | \`left:50% translateX(-50%)\` |
+| \`#curated\` | "Curated by Ceci est Passata…" | ${v(vals,'t_curated_size')} | ${v(vals,'t_curated_lh')} | center | — | JS-animated (15vh) | \`translateX(-50%)\` |
+| \`.bottom-nav\` | "PROGRAMMA TICKETS" | ${v(vals,'t_botnav_size')} | — | space-between | — | 0 | — |
+
+---
+
+## JS animation arrays [S1, S2, S3, S4]
+
+| Key | Values | Unit | Notes |
+|---|---|---|---|
+| \`logoFS\` | ${vArr('logoFS')} | px | \`#logo\` (1.png) width |
+| \`logoTop\` | ${vArr('logoTop')} | px | \`#logo\` top |
+| \`logo1Op\` | ${vArr('logo1Op')} | — | \`#logo\` opacity |
+| \`logo2Op\` | ${vArr('logo2Op')} | — | \`#logo2\` opacity |
+| \`eventTop\` | ${vArr('eventTop')} | px | \`#event-info\` top |
+| \`curatedBottom\` | ${vArr('curatedBottom')} | px | \`#curated\` bottom |
+| \`logoFS_vw\` | ${vArr('logoFS_vw')} | ×vw | mobile/tablet logo width |
+| \`logoTop_vh\` | ${vArr('logoTop_vh')} | ×vh | mobile logo top |
+| \`eventTop_vh\` | ${vArr('eventTop_vh')} | ×vh | mobile event-info top |
+| \`curatedBot_vh\` | ${vArr('curatedBot_vh')} | ×vh | mobile curated bottom |
+| \`introOp\` | ${vArr('introOp')} | — | \`#intro\` opacity |
+| \`manifestoOp\` | ${vArr('manifestoOp')} | — | \`#manifesto\` opacity |
+| \`curatedOp\` | ${vArr('curatedOp')} | — | \`#curated\` opacity |
+| \`eventInfoOp\` | ${vArr('eventInfoOp')} | — | \`#event-info\` opacity |
+| \`headerS3Op\` | ${vArr('headerS3Op')} | — | \`#header-s3\` opacity |
+`;
 }
 
 // ── UI ────────────────────────────────────────────────────────────────────────
@@ -388,7 +480,7 @@ function render(){
       \`<div class="row2">\${f('m_headers3_size','font-size')}\${f('m_headers3_lh','line-height')}</div>\`,
       \`<div class="row2">\${f('m_headers3_top','top')}\${f('m_headers3_padtop','padding-top')}</div>\`,
       sub('.hs3-logo-mob (bouche_logo.png)'),
-      f('m_hscenter_width','width'),
+      \`<div class="row2">\${f('m_hscenter_width','width')}\${f('m_hscenter_bottom','bottom')}</div>\`,
 
       sub('#manifesto'),
       \`<div class="row2">\${f('m_manifesto_size','font-size')}\${f('m_manifesto_lh','line-height')}</div>\`,
@@ -419,7 +511,7 @@ function render(){
       \`<div class="row2">\${f('t_headers3_size','font-size')}\${f('t_headers3_lh','line-height')}</div>\`,
       \`<div class="row2">\${f('t_headers3_top','top')}\${f('t_headers3_padtop','padding-top')}</div>\`,
       sub('.hs3-logo-mob (bouche_logo.png)'),
-      f('t_hscenter_width','width'),
+      \`<div class="row2">\${f('t_hscenter_width','width')}\${f('t_hscenter_bottom','bottom')}</div>\`,
 
       sub('#manifesto'),
       \`<div class="row2">\${f('t_manifesto_size','font-size')}\${f('t_manifesto_lh','line-height')}</div>\`,
@@ -588,6 +680,7 @@ http.createServer(async (req, res) => {
   // Push to git
   if (req.method === 'POST' && p === '/push') {
     const ts  = new Date().toISOString().slice(0, 16).replace('T', ' ');
+    fs.writeFileSync(MD, generateTypographyMd(getValues()), 'utf8');
     const add = `git add index.html typography.md`;
     const cmt = `git diff --cached --quiet && echo "Nothing to commit" || git commit -m "Typography edit ${ts}"`;
     const psh = `git push origin main`;
