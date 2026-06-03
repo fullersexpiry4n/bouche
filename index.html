@@ -158,17 +158,6 @@
 
     #manifesto-streep { display: none; }
 
-    #mob-s2-logo {
-      display: none;
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      mix-blend-mode: multiply;
-      height: auto;
-      pointer-events: none;
-      user-select: none;
-    }
-
     /* ── CURATED ── */
     #curated {
       position: absolute;
@@ -295,18 +284,11 @@
         bottom: 25vh;
       }
 
-      #mob-s2-logo {
-        display: block;
-        width: 72vw;
-        top: 22vh;
-        opacity: 0;
-      }
-
       #manifesto {
         font-size: 4.7vw;
         line-height: 1.3;
         text-align: justify;
-        top: 62%;
+        top: 50%;
         bottom: auto;
         transform: translate(-50%, -50%);
       }
@@ -434,8 +416,6 @@
     </div>
 
 
-    <img id="mob-s2-logo" src="1-768.webp" alt="" aria-hidden="true">
-
     <div id="manifesto">
       Bouche et Terre is not a festival you attend.<br>
       It&rsquo;s one you digest. Vertraag. Maak je handen vuil. Eet<br>
@@ -471,7 +451,6 @@
     const headerS3  = document.getElementById('header-s3');
     const manifesto       = document.getElementById('manifesto');
     const manifestoStreep = document.getElementById('manifesto-streep');
-    const mobS2Logo       = document.getElementById('mob-s2-logo');
     const curated   = document.getElementById('curated');
     const bottomNav = document.getElementById('bottom-nav');
 
@@ -581,10 +560,9 @@
       logo.style.width = m
         ? `${interp(t ? 'logoFS_vw_t' : 'logoFS_vw', p) * vw}px`
         : `${interp('logoFS', p)}px`;
-      logo.style.top = m
-        ? `${interp(t ? 'logoTop_vh_t' : 'logoTop_vh', p) * vh}px`
-        : `${interp('logoTop', p)}px`;
-      logo.style.opacity = interp('logo1Op', p);
+      logo.style.top       = (m && !t) ? '50%'                                           : m ? `${interp('logoTop_vh_t', p) * vh}px` : `${interp('logoTop', p)}px`;
+      logo.style.transform = (m && !t) ? 'translate(-50%, -50%)' : 'translateX(-50%)';
+      logo.style.opacity   = interp('logo1Op', p);
 
       // Logo 2 (pages 3–4, desktop only)
       if (!m) logo2.style.opacity = interp('logo2Op', p);
@@ -608,10 +586,6 @@
       // Manifesto
       manifesto.style.opacity = interp('manifestoOp', p);
       if (m) manifestoStreep.style.opacity = interp('streepOp', p);
-      // Mobile S2 logo — appears with manifesto, fades before header-s3
-      mobS2Logo.style.opacity = (m && !t)
-        ? interp('manifestoOp', p) * (1 - interp('headerS3Op', p))
-        : 0;
 
       // Curated
       curated.style.opacity = interp('curatedOp', p);
