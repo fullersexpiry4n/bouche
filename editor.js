@@ -168,6 +168,8 @@ const V_KEYS = [
   'logoFS', 'logoTop', 'eventTop', 'curatedBottom',
   // Mobile vh/vw
   'logoFS_vw', 'logoTop_vh', 'eventTop_vh', 'curatedBot_vh',
+  // Tablet vh/vw
+  'logoFS_vw_t', 'logoTop_vh_t', 'eventTop_vh_t', 'curatedBot_vh_t',
   // Opacity
   'logo1Op', 'logo2Op',
   'eventInfoOp', 'headerS3Op', 'introOp', 'manifestoOp', 'curatedOp', 'streepOp',
@@ -297,10 +299,14 @@ function generateTypographyMd(vals) {
 | \`logo2Op\` | ${vArr('logo2Op')} | — | \`#logo2\` opacity |
 | \`eventTop\` | ${vArr('eventTop')} | px | \`#event-info\` top |
 | \`curatedBottom\` | ${vArr('curatedBottom')} | px | \`#curated\` bottom |
-| \`logoFS_vw\` | ${vArr('logoFS_vw')} | ×vw | mobile/tablet logo width |
+| \`logoFS_vw\` | ${vArr('logoFS_vw')} | ×vw | mobile logo width |
 | \`logoTop_vh\` | ${vArr('logoTop_vh')} | ×vh | mobile logo top |
 | \`eventTop_vh\` | ${vArr('eventTop_vh')} | ×vh | mobile event-info top |
 | \`curatedBot_vh\` | ${vArr('curatedBot_vh')} | ×vh | mobile curated bottom |
+| \`logoFS_vw_t\` | ${vArr('logoFS_vw_t')} | ×vw | tablet logo width |
+| \`logoTop_vh_t\` | ${vArr('logoTop_vh_t')} | ×vh | tablet logo top |
+| \`eventTop_vh_t\` | ${vArr('eventTop_vh_t')} | ×vh | tablet event-info top |
+| \`curatedBot_vh_t\` | ${vArr('curatedBot_vh_t')} | ×vh | tablet curated bottom |
 | \`introOp\` | ${vArr('introOp')} | — | \`#intro\` opacity |
 | \`manifestoOp\` | ${vArr('manifestoOp')} | — | \`#manifesto\` opacity |
 | \`curatedOp\` | ${vArr('curatedOp')} | — | \`#curated\` opacity |
@@ -537,6 +543,13 @@ function render(){
       a('logoTop_vh','logo top (vh)'),
       a('eventTop_vh','event-info top (vh)'),
       a('curatedBot_vh','curated bottom (vh)'),
+    ].join(''),false),
+
+    sec('JS — Tablet vh/vw',[
+      a('logoFS_vw_t','logo width (vw)'),
+      a('logoTop_vh_t','logo top (vh)'),
+      a('eventTop_vh_t','event-info top (vh)'),
+      a('curatedBot_vh_t','curated bottom (vh)'),
     ].join(''),false),
 
     sec('JS — Opacity',[

@@ -335,7 +335,7 @@
         width: 100%;
         height: auto;
         mix-blend-mode: multiply;
-        bottom: 25vh;
+        bottom:0;
       }
 
       #manifesto {
@@ -441,6 +441,7 @@
     const bottomNav = document.getElementById('bottom-nav');
 
     const mob = () => window.innerWidth < 1024;
+    const tab = () => window.innerWidth >= 768 && window.innerWidth < 1024;
 
     // ── Stage scaling ─────────────────────────────────────────────────────────
     function resizeStage() {
@@ -498,6 +499,11 @@
       logoTop_vh:      [20,    20,    3,    3   ],
       eventTop_vh:     [70,    3,    0,    0   ],
       curatedBot_vh:   [0,    11,    11,    11   ],
+      // Tablet viewport units (×vw or ×vh)
+      logoFS_vw_t:     [100,    100,    28,    28   ],
+      logoTop_vh_t:    [20,    20,    3,    3   ],
+      eventTop_vh_t:   [70,    3,    0,    0   ],
+      curatedBot_vh_t: [0,    11,    11,    11   ],
       // Logo opacities
       logo1Op:         [1,     1,     0,     0    ],
       logo2Op:         [0,     0,     1,     1    ],
@@ -527,6 +533,7 @@
       const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
       const p         = maxScroll > 0 ? clamp(scrollY / maxScroll, 0, 1) : 0;
       const m         = mob();
+      const t         = tab();
       const vw        = window.innerWidth  / 100;
       const vh        = window.innerHeight / 100;
 
@@ -537,11 +544,11 @@
 
       // Logo 1 (pages 1–2)
       logo.style.width = m
-        ? `${interp('logoFS_vw', p) * vw}px`
-        : `${interp('logoFS',    p)}px`;
+        ? `${interp(t ? 'logoFS_vw_t' : 'logoFS_vw', p) * vw}px`
+        : `${interp('logoFS', p)}px`;
       logo.style.top = m
-        ? `${interp('logoTop_vh', p) * vh}px`
-        : `${interp('logoTop',    p)}px`;
+        ? `${interp(t ? 'logoTop_vh_t' : 'logoTop_vh', p) * vh}px`
+        : `${interp('logoTop', p)}px`;
       logo.style.opacity = interp('logo1Op', p);
 
       // Logo 2 (pages 3–4, desktop only)
@@ -555,8 +562,8 @@
       eventInfo.style.opacity       = evOp;
       eventInfo.style.pointerEvents = evOp > 0.1 ? 'auto' : 'none';
       eventInfo.style.top = m
-        ? `${interp('eventTop_vh', p) * vh}px`
-        : `${interp('eventTop',    p)}px`;
+        ? `${interp(t ? 'eventTop_vh_t' : 'eventTop_vh', p) * vh}px`
+        : `${interp('eventTop', p)}px`;
 
       // Header S3
       const h3Op = interp('headerS3Op', p);
@@ -570,7 +577,7 @@
       // Curated
       curated.style.opacity = interp('curatedOp', p);
       curated.style.bottom = m
-        ? `${interp('curatedBot_vh', p) * vh}px`
+        ? `${interp(t ? 'curatedBot_vh_t' : 'curatedBot_vh', p) * vh}px`
         : `${interp('curatedBottom', p)}px`;
     }
 
