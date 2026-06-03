@@ -420,7 +420,7 @@
 
   <nav class="bottom-nav" id="bottom-nav" aria-label="Main navigation">
     <a href="#programma">PROGRAMMA</a>
-    <a href="#tickets">TICKETS</a>
+    <a href="https://www.passata.be/product-page/bouche-et-terre" target="_blank" rel="noopener noreferrer">TICKETS</a>
   </nav>
 
   <script>
@@ -430,7 +430,8 @@
     const intro     = document.getElementById('intro');
     const eventInfo = document.getElementById('event-info');
     const headerS3  = document.getElementById('header-s3');
-    const manifesto = document.getElementById('manifesto');
+    const manifesto       = document.getElementById('manifesto');
+    const manifestoStreep = document.getElementById('manifesto-streep');
     const curated   = document.getElementById('curated');
     const bottomNav = document.getElementById('bottom-nav');
 
@@ -500,6 +501,7 @@
       headerS3Op:      [0,     0,     1,     1    ],
       introOp:         [1,     0,     0,     0    ],
       manifestoOp:     [0,     1,     1,     1    ],
+      streepOp:        [0,     0,     1,     1    ],
       curatedOp:       [0,     1,     1,     1    ],
     };
 
@@ -558,6 +560,7 @@
 
       // Manifesto
       manifesto.style.opacity = interp('manifestoOp', p);
+      if (m) manifestoStreep.style.opacity = interp('streepOp', p);
 
       // Curated
       curated.style.opacity = interp('curatedOp', p);

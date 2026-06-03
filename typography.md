@@ -35,7 +35,7 @@
 | `#header-s3` | "Wonder Wilder Farmer Fest / Le…" | 4vw | 1.25 | left / right | 8vh | — | — |
 | `.hs3-logo-mob` (bouche_logo.png — S3/S4) | "Bouche et terre" | 100% | — | — | 8vh | — | — |
 | `#manifesto` | "Bouche et Terre is not…" | 4.5vw | 1.3 | center | 50% | auto | `translate(-50%, -50%)` — `<br>` hidden |
-| `#manifesto-streep` | Brown brush-stroke PNG below manifesto | 100vw | — | — | — | `margin-top: 0.6em` | `left:50% translateX(-50%)` |
+| `#manifesto-streep` | Brown brush-stroke PNG below manifesto (S3/S4 only) | 100vw | — | — | — | `margin-top: 0.6em` | `left:50% translateX(-50%)` |
 | `#curated` | "Curated by Ceci est Passata…" | 4vw | 1.6 | center | — | JS-animated (6vh) | `translateX(-50%)` |
 | `.bottom-nav` | "PROGRAMMA TICKETS" | 5vw | — | space-between | — | 0 | — |
 | `#logo` (fluid) | "Bouche et terre" | 100vw→28vw JS-animated | — | center | 20vh→3vh JS-animated | — | none |
@@ -49,7 +49,7 @@
 | `#header-s3` | "Wonder Wilder Farmer Fest / Le…" | 2.8vw | 1.25 | left / right | 10vh | — | — |
 | `.hs3-logo-mob` (bouche_logo.png — S3/S4) | "Bouche et terre" | 100% | — | — | 10vh | — | — |
 | `#manifesto` | "Bouche et Terre is not…" | 4vw | 1.3 | center | 50% | auto | `translate(-50%, -50%)` — `<br>` hidden |
-| `#manifesto-streep` | Brown brush-stroke PNG below manifesto | 100vw | — | — | — | `margin-top: 0.6em` | `left:50% translateX(-50%)` |
+| `#manifesto-streep` | Brown brush-stroke PNG below manifesto (S3/S4 only) | 100vw | — | — | — | `margin-top: 0.6em` | `left:50% translateX(-50%)` |
 | `#curated` | "Curated by Ceci est Passata…" | 2.2vw | 1.6 | center | — | JS-animated (15vh) | `translateX(-50%)` |
 | `.bottom-nav` | "PROGRAMMA TICKETS" | 2.5vw | — | space-between | — | 0 | — |
 
