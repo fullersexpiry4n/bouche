@@ -66,19 +66,15 @@
     #logo {
       position: absolute;
       left: 50%;
+      width: 1100px;
+      top: 300px;
       transform: translateX(-50%);
-      font-family: 'Dancing Script', cursive;
-      font-weight: 700;
-      color: var(--brown);
-      text-align: center;
-      line-height: 0.88;
-      white-space: nowrap;
+      display: block;
+      mix-blend-mode: multiply;
       z-index: 20;
       user-select: none;
-      will-change: transform, top, font-size;
+      will-change: transform, top, width;
     }
-    #logo .line1 { display: block; }
-    #logo .line2 { display: block; font-size: 0.84em; line-height: 0; }
 
     /* ── EVENT INFO (states 1 & 2 — 4 columns) ── */
     #event-info {
@@ -267,7 +263,7 @@
       #intro, #manifesto, #brush, #curated {
         opacity: 1 !important; position: static !important; transform: none !important;
       }
-      #logo { font-size: 20vw !important; position: static !important; }
+      #logo { width: 80vw !important; position: static !important; }
       #event-info { position: static !important; }
       .scroll-driver { height: auto; }
     }
@@ -284,10 +280,7 @@
       Ceci est Passata &amp; Le Monde des Mille Couleurs
     </div>
 
-    <div id="logo" role="img" aria-label="Bouche et Terre">
-      <span class="line1">Bouche</span>
-      <span class="line2">et terre</span>
-    </div>
+    <img id="logo" src="1.png" alt="Bouche et Terre">
 
     <div id="event-info">
       <div>Wonder Wilder<br>Farmer Fest</div>
@@ -400,14 +393,14 @@
     // ── Animation values ──────────────────────────────────────────────────────
     // Desktop: px at 1920×1440  |  Mobile _vw/_vh: multiply by vw/vh at runtime
     const V = {
-      // Desktop px
-      logoFS:          [384,   326,   134,   134  ],
-      logoTop:         [288,   288,   22,    22   ],
+      // Desktop px (logoFS = image width)
+      logoFS:          [1920,    1440,    1,    1   ],
+      logoTop:         [0,    ,    22,    22   ],
       eventTop:        [1123,  36,    36,    36   ],
       brushTop:        [1051,  1051,  1094,  1094 ],
       curatedBottom:   [173,   173,   173,   173  ],
       // Mobile viewport units (×vw or ×vh)
-      logoFS_vw:       [30,    24,    10,    10   ],
+      logoFS_vw:       [75,    65,    28,    28   ],
       logoTop_vh:      [22,    18,    3,     3    ],
       eventTop_vh:     [78,    3,     3,     3    ],
       brushTop_vh:     [68,    68,    74,    74   ],
@@ -447,7 +440,7 @@
       document.body.style.backgroundColor = bg;
 
       // Logo
-      logo.style.fontSize = m
+      logo.style.width = m
         ? `${interp('logoFS_vw', p) * vw}px`
         : `${interp('logoFS',    p)}px`;
       logo.style.top = m
