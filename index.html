@@ -383,8 +383,15 @@
       Ceci est Passata &amp; Le Monde des Mille Couleurs
     </div>
 
-    <img id="logo" src="1.png" alt="Bouche et Terre">
-  <img id="logo2" data-src="3.png" alt="Bouche et Terre">
+    <picture>
+      <source type="image/webp" srcset="1-768.webp 768w, 1-1024.webp 1024w, 1-1920.webp 1920w"
+        sizes="(max-width: 767px) 100vw, (max-width: 1023px) 90vw, 100vw">
+      <img id="logo" src="1.png" alt="Bouche et Terre">
+    </picture>
+    <picture>
+      <source id="logo2-source" type="image/webp">
+      <img id="logo2" data-src="3.png" alt="Bouche et Terre">
+    </picture>
 
     <div id="event-info">
       <div>Wonder Wilder<br>Farmer Fest</div>
@@ -398,7 +405,10 @@
         <div>Wonder Wilder<br>Farmer Fest</div>
         <div>Sunday 4.10.26<br>10H &mdash; 17H</div>
       </div>
-      <div class="hs3-center"><img class="hs3-logo-mob" src="bouche_logo.png" alt="Bouche et Terre"></div>
+      <div class="hs3-center"><picture>
+        <source type="image/webp" srcset="bouche_logo-480.webp 480w, bouche_logo-960.webp 960w" sizes="33vw">
+        <img class="hs3-logo-mob" src="bouche_logo.png" alt="Bouche et Terre">
+      </picture></div>
       <div class="hs3-right">
         <div>Le Monde<br>des Mille Couleurs</div>
         <div>Zweerdstraat 6<br>8900 Dikkebus</div>
@@ -414,7 +424,10 @@
       a supermarket looks like. One day of wildfarming,<br>
       handcraft, son et lumi&egrave;re &mdash; on a living field where la<br>
       terre a encore des choses &agrave; dire.
-      <img id="manifesto-streep" src="streep.png" alt="" aria-hidden="true">
+      <picture>
+        <source type="image/webp" srcset="streep-768.webp 768w, streep-1024.webp 1024w" sizes="100vw">
+        <img id="manifesto-streep" src="streep.png" alt="" aria-hidden="true">
+      </picture>
     </div>
 
     <div id="curated">
@@ -430,8 +443,9 @@
 
   <script>
     const stage     = document.getElementById('stage');
-    const logo      = document.getElementById('logo');
-    const logo2     = document.getElementById('logo2');
+    const logo        = document.getElementById('logo');
+    const logo2       = document.getElementById('logo2');
+    const logo2source = document.getElementById('logo2-source');
     const intro     = document.getElementById('intro');
     const eventInfo = document.getElementById('event-info');
     const headerS3  = document.getElementById('header-s3');
@@ -456,7 +470,7 @@
         bottomNav.style.paddingRight = `${sidePad}px`;
       } else {
         // Desktop: fixed 1920×1440 (4:3) canvas, scaled to fit
-        if (!logo2.src) logo2.src = logo2.dataset.src;
+        if (!logo2.src) { logo2source.srcset = '3-1920.webp'; logo2.src = logo2.dataset.src; }
         stage.style.width  = '1920px';
         stage.style.height = '1440px';
         const scale = Math.min(window.innerWidth / 1920, window.innerHeight / 1440);
