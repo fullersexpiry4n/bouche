@@ -150,7 +150,9 @@ const CSS_MAP = {
   t_manifesto_size:     ['t', '#manifesto',      'font-size'],
   t_manifesto_lh:       ['t', '#manifesto',      'line-height'],
   t_manifesto_align:    ['t', '#manifesto',      'text-align'],
+  t_manifesto_top:      ['t', '#manifesto',      'top'],
   t_manifesto_bottom:   ['t', '#manifesto',      'bottom'],
+  t_manifesto_transform:['t', '#manifesto',      'transform'],
   // Tablet — #curated
   t_curated_size:       ['t', '#curated',        'font-size'],
   t_curated_lh:         ['t', '#curated',        'line-height'],
@@ -223,7 +225,7 @@ const UI = /* html */`<!DOCTYPE html>
 <meta charset="UTF-8">
 <title>Bouche Editor</title>
 <style>
-:root{--br:#4a1810;--cr:#f0ffa8;--pc:#ffbfbf;--bd:rgba(74,24,16,.13)}
+:root{--br:#4a1810;--cr:#f2f4ba;--pc:#ffbfbf;--bd:rgba(74,24,16,.13)}
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:13px;background:var(--cr);color:var(--br);display:flex;flex-direction:column;height:100vh;overflow:hidden}
 header{display:flex;align-items:center;gap:8px;padding:0 14px;height:46px;background:var(--br);color:var(--cr);flex-shrink:0}
@@ -231,8 +233,8 @@ h1{font-size:13px;font-weight:600;flex:1;letter-spacing:.03em}
 #st{font-size:11px;opacity:.75}
 .btn{border:none;padding:5px 13px;border-radius:3px;font-size:12px;font-weight:600;cursor:pointer}
 .btn:disabled{opacity:.45;cursor:default}
-#pb{background:rgba(240,255,168,.15);color:var(--cr);border:1px solid rgba(240,255,168,.25)}
-#pb:hover:not(:disabled){background:rgba(240,255,168,.25)}
+#pb{background:rgba(242,244,186,.15);color:var(--cr);border:1px solid rgba(242,244,186,.25)}
+#pb:hover:not(:disabled){background:rgba(242,244,186,.25)}
 #db{background:var(--cr);color:var(--br)}
 #db:hover:not(:disabled){background:var(--pc)}
 main{display:flex;flex:1;overflow:hidden}
@@ -334,7 +336,7 @@ function render(){
   document.getElementById('panel').innerHTML=[
 
     sec('Manifesto Text',[
-      \`<p style="font-size:10px;opacity:.5;line-height:1.5;margin-bottom:6px">Edit the manifesto copy below. Use &lt;br&gt; for manual line breaks (desktop), or remove them to let text wrap naturally on mobile/tablet. HTML entities: &amp;rsquo; &amp;mdash; &amp;egrave; &amp;amp;</p>\`,
+      \`<p style="font-size:10px;opacity:.5;line-height:1.5;margin-bottom:6px">Edit the manifesto copy below. &lt;br&gt; tags control line breaks on <strong>desktop only</strong> — they are automatically hidden on mobile &amp; tablet so text wraps naturally. HTML entities: &amp;rsquo; &amp;mdash; &amp;egrave; &amp;amp;</p>\`,
       ta('manifesto_text','innerHTML'),
     ].join('')),
 
@@ -421,7 +423,8 @@ function render(){
 
       sub('#manifesto'),
       \`<div class="row2">\${f('t_manifesto_size','font-size')}\${f('t_manifesto_lh','line-height')}</div>\`,
-      \`<div class="row2">\${sel('t_manifesto_align','text-align',['left','center','right','justify'])}\${f('t_manifesto_bottom','bottom')}</div>\`,
+      \`<div class="row2">\${sel('t_manifesto_align','text-align',['left','center','right','justify'])}\${f('t_manifesto_top','top')}</div>\`,
+      \`<div class="row2">\${f('t_manifesto_bottom','bottom')}\${f('t_manifesto_transform','transform')}</div>\`,
 
       sub('#curated'),
       \`<div class="row2">\${f('t_curated_size','font-size')}\${f('t_curated_lh','line-height')}</div>\`,
@@ -499,7 +502,7 @@ function mode(m){
 function status(t,ok){
   const s=document.getElementById('st');
   s.textContent=t;
-  s.style.color=ok==null?'':(ok?'#f0ffa8':'#ffbfbf');
+  s.style.color=ok==null?'':(ok?'#f2f4ba':'#ffbfbf');
   if(ok!=null)setTimeout(()=>{s.textContent='';s.style.color='';},6000);
 }
 
