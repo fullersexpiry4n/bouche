@@ -30,13 +30,25 @@
 
 | Element | Text | Size | Line height | Alignment | Top | Bottom | Transform |
 |---|---|---|---|---|---|---|---|
-| `#intro` | "Bouche et Terre is genuinely…" | 4vw | 1.2 | center | 4vh | — | `translateX(-50%)` |
-| `#event-info` | "Wonder Wilder Farmer Fest Sunday…" | 4vw | 1.2 | center (2-col grid) | JS-animated (78vh → 3vh) | 0 | — |
-| `#header-s3` | "Wonder Wilder Farmer Fest / Le…" | 4vw | 1.2 | left / right | 33px | — | — |
-| `#manifesto` | "Bouche et Terre is not…" | 5vw | 1.35 | center | auto | calc(10vh + 10vw) | `translateX(-50%)` |
-| `#curated` | "Curated by Ceci est Passata…" | 3vw | 1.6 | center | — | JS-animated (15vh) | `translateX(-50%)` |
-| `.bottom-nav` | "PROGRAMMA TICKETS" | 5vw | 0 | space-between | — | 0 | — |
-| `#logo` (reduced motion) | "Bouche et terre" | 80vw width | — | center | — | — | none |
+| `#intro` | "Bouche et Terre is genuinely…" | 5vw | 1.2 | center | 4vh | — | `translateX(-50%)` |
+| `#event-info` | "Wonder Wilder Farmer Fest Sunday…" | 5vw | 1.2 | center (2-col grid) | JS-animated (78vh → 3vh) | — | — |
+| `#header-s3` | "Wonder Wilder Farmer Fest / Le…" | 5vw | 1.25 | left / right | 3vh | — | — |
+| `#manifesto` | "Bouche et Terre is not…" | 6vw | 1.35 | center | auto | calc(10vh + 8vw) | `translateX(-50%)` |
+| `#curated` | "Curated by Ceci est Passata…" | 4vw | 1.6 | center | — | JS-animated (15vh) | `translateX(-50%)` |
+| `.bottom-nav` | "PROGRAMMA TICKETS" | 5vw | — | space-between | — | 0 | — |
+| `#logo` (fluid) | "Bouche et terre" | 90vw width JS-animated | — | center | 0 | — | none |
+| `#logo2` (fluid) | "Bouche et terre" | 100vw | — | center | 0 | — | none |
+
+## Tablet font sizes (768px – 1023px)
+
+| Element | Text | Size | Line height | Alignment | Top | Bottom | Transform |
+|---|---|---|---|---|---|---|---|
+| `#intro` | "Bouche et Terre is genuinely…" | 2.6vw | 1.2 | center | 3vh | — | `translateX(-50%)` |
+| `#event-info` | "Wonder Wilder Farmer Fest Sunday…" | 2.8vw | 1.2 | center (2-col grid) | JS-animated | — | — |
+| `#header-s3` | "Wonder Wilder Farmer Fest / Le…" | 2.8vw | 1.25 | left / right | 3vh | — | — |
+| `#manifesto` | "Bouche et Terre is not…" | 4vw | 1.3 | center | auto | calc(8vh + 4vw) | `translateX(-50%)` |
+| `#curated` | "Curated by Ceci est Passata…" | 2.2vw | 1.6 | center | — | JS-animated (15vh) | `translateX(-50%)` |
+| `.bottom-nav` | "PROGRAMMA TICKETS" | 2.5vw | — | space-between | — | 0 | — |
 
 ---
 
@@ -50,7 +62,7 @@
 | `logo2Op` | 0, 0, 1, 1 | — | `#logo2` opacity |
 | `eventTop` | 1123, 36, 36, 36 | px | `#event-info` top |
 | `curatedBottom` | 173, 173, 173, 173 | px | `#curated` bottom |
-| `logoFS_vw` | 75, 65, 28, 28 | ×vw | mobile logo width |
+| `logoFS_vw` | 90, 90, 28, 28 | ×vw | mobile/tablet logo width |
 | `logoTop_vh` | 0, 0, 3, 3 | ×vh | mobile logo top |
 | `eventTop_vh` | 78, 3, 3, 3 | ×vh | mobile event-info top |
 | `curatedBot_vh` | 15, 15, 15, 15 | ×vh | mobile curated bottom |
