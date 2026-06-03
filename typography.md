@@ -62,7 +62,7 @@
 | `logo2Op` | 0, 0, 1, 1 | — | `#logo2` opacity |
 | `eventTop` | 1123, 36, 36, 36 | px | `#event-info` top |
 | `curatedBottom` | 173, 173, 173, 173 | px | `#curated` bottom |
-| `logoFS_vw` | 90, 90, 28, 28 | ×vw | mobile/tablet logo width |
+| `logoFS_vw` | 100, 100, 28, 28 | ×vw | mobile/tablet logo width |
 | `logoTop_vh` | 0, 0, 3, 3 | ×vh | mobile logo top |
 | `eventTop_vh` | 78, 3, 3, 3 | ×vh | mobile event-info top |
 | `curatedBot_vh` | 15, 15, 15, 15 | ×vh | mobile curated bottom |
