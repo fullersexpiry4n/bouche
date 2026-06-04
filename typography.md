@@ -48,7 +48,7 @@
 | `#event-info` | "Wonder Wilder Farmer Fest Sunday…" | 2.8vw | — | center (2-col grid) | JS-animated | — | — |
 | `#header-s3` | "Wonder Wilder Farmer Fest / Le…" | 2.8vw | 1.25 | left / right | 10vh | — | — |
 | `.hs3-logo-mob` (bouche_logo.png — S3/S4) | "Bouche et terre" | 100% | — | — | — | 25vh | — |
-| `#manifesto` | "Bouche et Terre is not…" | 3vw | 1.3 | center | 62% | auto | `translate(-50%, -50%)` — `<br>` hidden |
+| `#manifesto` | "Bouche et Terre is not…" | 3vw | 1.3 | center | 55% | auto | `translate(-50%, -50%)` — `<br>` hidden |
 | `#manifesto-streep` | Brown brush-stroke PNG below manifesto (S3/S4 only) | 100vw | — | — | — | `margin-top: 0.6em` | `left:50% translateX(-50%)` |
 | `#curated` | "Curated by Ceci est Passata…" | 2.2vw | 1.6 | center | — | JS-animated (15vh) | `translateX(-50%)` |
 | `.bottom-nav` | "PROGRAMMA TICKETS" | 2.5vw | — | space-between | — | 0 | — |
