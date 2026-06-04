@@ -381,13 +381,13 @@
     </div>
 
     <picture>
-      <source type="image/webp" srcset="1-768.webp 768w, 1-1024.webp 1024w, 1-1920.webp 1920w"
+      <source type="image/webp" srcset="images/1-768.webp 768w, images/1-1024.webp 1024w, images/1-1920.webp 1920w"
         sizes="(max-width: 767px) 100vw, (max-width: 1023px) 90vw, 100vw">
-      <img id="logo" src="1.png" alt="Bouche et Terre">
+      <img id="logo" src="images/1.png" alt="Bouche et Terre">
     </picture>
     <picture>
       <source id="logo2-source" type="image/webp">
-      <img id="logo2" data-src="3.png" alt="Bouche et Terre">
+      <img id="logo2" data-src="images/3.png" alt="Bouche et Terre">
     </picture>
 
     <div id="event-info">
@@ -403,8 +403,8 @@
         <div>Sunday 4.10.26<br>10H &mdash; 17H</div>
       </div>
       <div class="hs3-center"><picture>
-        <source type="image/webp" srcset="bouche_logo-480.webp 480w, bouche_logo-960.webp 960w" sizes="33vw">
-        <img class="hs3-logo-mob" src="bouche_logo.png" alt="Bouche et Terre">
+        <source type="image/webp" srcset="images/bouche_logo-480.webp 480w, images/bouche_logo-960.webp 960w" sizes="33vw">
+        <img class="hs3-logo-mob" src="images/bouche_logo.png" alt="Bouche et Terre">
       </picture></div>
       <div class="hs3-right">
         <div>Le Monde<br>des Mille Couleurs</div>
@@ -422,8 +422,8 @@
       handcraft, son et lumière — on a living field where la<br>
       terre a encore des choses à dire.
       <picture>
-        <source type="image/webp" srcset="streep-768.webp 768w, streep-1024.webp 1024w" sizes="100vw">
-        <img id="manifesto-streep" src="streep.png" alt="" aria-hidden="true">
+        <source type="image/webp" srcset="images/streep-768.webp 768w, images/streep-1024.webp 1024w" sizes="100vw">
+        <img id="manifesto-streep" src="images/streep.png" alt="" aria-hidden="true">
       </picture>
     </div>
 
@@ -467,7 +467,7 @@
         bottomNav.style.paddingRight = `${sidePad}px`;
       } else {
         // Desktop: fixed 1920×1440 (4:3) canvas, scaled to fit
-        if (!logo2.src) { logo2source.srcset = '3-1920.webp'; logo2.src = logo2.dataset.src; }
+        if (!logo2.src) { logo2source.srcset = 'images/3-1920.webp'; logo2.src = logo2.dataset.src; }
         stage.style.width  = '1920px';
         stage.style.height = '1440px';
         const scale = Math.min(window.innerWidth / 1920, window.innerHeight / 1440);

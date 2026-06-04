@@ -1,0 +1,25 @@
+What moves while scrolling
+State 1 / Page 1
+Big logo sits centered, very large.
+Intro sentence is at the top center.
+Event info is near the bottom.
+White sticky footer/nav is fixed at bottom: PROGRAMMA left, TICKETS right.
+State 2 / Page 2
+Event info moves to the very top.
+Big logo moves slightly upward and overlays the manifesto text.
+Manifesto text appears behind the logo.
+Curated line appears near bottom.
+Footer/nav stays fixed.
+State 3 / Page 3
+Logo becomes much smaller and moves to the top center.
+Event info splits left and right around the logo.
+Manifesto text is now fully readable in the center.
+Brush underline stays under the manifesto.
+Footer/nav still fixed.
+State 4 / Page 4
+Same layout as state 3.
+Background color changes from pale yellow/green to soft peach/pink.
+Content positions stay the same.
+Footer/nav still fixed.
+So the scroll animation is basically:
+Hero poster → logo overlays text → logo shrinks to header → background color changes.
