@@ -34,7 +34,7 @@
 | `#event-info` | "Wonder Wilder Farmer Fest Sunday…" | 4vw | — | center (2-col grid) | JS-animated (75vh → 3vh) | — | — |
 | `#header-s3` | "Wonder Wilder Farmer Fest / Le…" | 4vw | 1.25 | left / right | 8vh | — | — |
 | `.hs3-logo-mob` (bouche_logo.png — S3/S4) | "Bouche et terre" | 100% | — | — | — | 25vh | — |
-| `#manifesto` | "Bouche et Terre is not…" | 4.5vw | 1.3 | justify | 50% | auto | `translate(-50%, -50%)` — `<br>` hidden |
+| `#manifesto` | "Bouche et Terre is not…" | min(4.5vw, 19px) | 1.3 | justify | 48% | auto | `translate(-50%, -50%)` — `<br>` hidden |
 | `#manifesto-streep` | Brown brush-stroke PNG below manifesto (S3/S4 only) | 100vw | — | — | — | `margin-top: 0.6em` | `left:50% translateX(-50%)` |
 | `#curated` | "Curated by Ceci est Passata…" | 4vw | 1.6 | center | — | JS-animated (6vh) | `translateX(-50%)` |
 | `.bottom-nav` | "PROGRAMMA TICKETS" | 5vw | — | space-between | — | 0 | — |
@@ -45,7 +45,7 @@
 | Element | Text | Size | Line height | Alignment | Top | Bottom | Transform |
 |---|---|---|---|---|---|---|---|
 | `#intro` | "Bouche et Terre is genuinely…" | 2.6vw | 1.2 | center | 3vh | — | `translateX(-50%)` |
-| `#event-info` | "Wonder Wilder Farmer Fest Sunday…" | 2.8vw | — | center (2-col grid) | JS-animated | — | — |
+| `#event-info` | "Wonder Wilder Farmer Fest Sunday…" | 2.8vw | 1.25 | center (2-col grid) | JS-animated | — | — |
 | `#header-s3` | "Wonder Wilder Farmer Fest / Le…" | 2.8vw | 1.25 | left / right | 10vh | — | — |
 | `.hs3-logo-mob` (bouche_logo.png — S3/S4) | "Bouche et terre" | 100% | — | — | — | 25vh | — |
 | `#manifesto` | "Bouche et Terre is not…" | 3vw | 1.3 | center | 55% | auto | `translate(-50%, -50%)` — `<br>` hidden |
@@ -68,7 +68,7 @@
 | `logoFS_vw` | 100, 100, 28, 28 | ×vw | mobile logo width |
 | `logoTop_vh` | 20, 20, 3, 3 | ×vh | mobile logo top |
 | `eventTop_vh` | 70, 3, 0, 0 | ×vh | mobile event-info top |
-| `curatedBot_vh` | 0, 11, 11, 11 | ×vh | mobile curated bottom |
+| `curatedBot_vh` | 0, 11, 11, 19 | ×vh | mobile curated bottom |
 | `logoFS_vw_t` | 90, 90, 28, 28 | ×vw | tablet logo width |
 | `logoTop_vh_t` | 15, 15, 3, 3 | ×vh | tablet logo top |
 | `eventTop_vh_t` | 70, 3, 0, 0 | ×vh | tablet event-info top |
