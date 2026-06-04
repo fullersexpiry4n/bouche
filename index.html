@@ -138,11 +138,11 @@
     /* ── MANIFESTO ── */
     #manifesto {
       position: absolute;
-      bottom: 346px;
+      bottom: 500px;
       left: 50%;
       transform: translateX(-50%);
       font-family: 'ClarelSerif', Georgia, serif;
-      font-size: 66px;
+      font-size: 50px;
       text-align: center;
       line-height: 1.16;
       max-width: 88%;
@@ -154,6 +154,20 @@
     }
 
     #manifesto-streep { display: none; }
+
+    #sub-partner {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      mix-blend-mode: multiply;
+      height: auto;
+      opacity: 0;
+      pointer-events: none;
+      /* Desktop sizing (1920×1440 canvas) */
+      width: 300px;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
 
     /* ── CURATED ── */
     #curated {
@@ -296,6 +310,13 @@
         width: 85vw;
       }
 
+      #sub-partner {
+        width: 62vw;
+        top: 50%;
+        bottom: auto;
+        transform: translate(-50%, -50%);
+      }
+
       .bottom-nav {
         height: 8vh;
         font-size: 5vw;
@@ -348,6 +369,13 @@
         font-size: 2.2vw;
         line-height: 1.6;
         width: 70vw;
+      }
+
+      #sub-partner {
+        width: 46vw;
+        top: 50%;
+        bottom: auto;
+        transform: translate(-50%, -50%);
       }
 
       .bottom-nav {
@@ -428,6 +456,11 @@ with blooming courage, feet in the ground and hearts wide open - where nature tr
       </picture>
     </div>
 
+    <picture>
+      <source type="image/webp" srcset="images/partner.webp">
+      <img id="sub-partner" src="images/partner.png" alt="" aria-hidden="true">
+    </picture>
+
     <div id="curated">
       Curated by Ceci est Passata &amp; Le Monde des Mille Couleurs
     </div>
@@ -449,6 +482,7 @@ with blooming courage, feet in the ground and hearts wide open - where nature tr
     const headerS3  = document.getElementById('header-s3');
     const manifesto       = document.getElementById('manifesto');
     const manifestoStreep = document.getElementById('manifesto-streep');
+    const subPartner = document.getElementById('sub-partner');
     const curated   = document.getElementById('curated');
     const bottomNav = document.getElementById('bottom-nav');
 
@@ -526,6 +560,7 @@ with blooming courage, feet in the ground and hearts wide open - where nature tr
       manifestoOp:     [0,     1,     1,     1    ],
       streepOp:        [0,     0,     1,     1    ],
       curatedOp:       [0,     1,     1,     1    ],
+      subPartnerOp:    [0,     0,     0,     1    ],
     };
 
     function interp(key, p) {
@@ -584,6 +619,9 @@ with blooming courage, feet in the ground and hearts wide open - where nature tr
       // Manifesto
       manifesto.style.opacity = interp('manifestoOp', p);
       if (m) manifestoStreep.style.opacity = interp('streepOp', p);
+
+      // Sub-partner logos (S4 only)
+      subPartner.style.opacity = interp('subPartnerOp', p);
 
       // Curated
       curated.style.opacity = interp('curatedOp', p);
