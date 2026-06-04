@@ -163,10 +163,11 @@
       height: auto;
       opacity: 0;
       pointer-events: none;
-      /* Desktop sizing (1920×1440 canvas) */
-      width: 300px;
-      top: 50%;
-      transform: translate(-50%, -50%);
+      z-index: 25; /* above the 3.png artwork (#logo2, z 20) */
+      /* Desktop only — in the gap below the manifesto text (ends ~y940),
+         above the 3.png brush stroke (~y1240) */
+      width: 490px;
+      bottom: 300px;
     }
 
     /* ── CURATED ── */
@@ -310,12 +311,7 @@
         width: 85vw;
       }
 
-      #sub-partner {
-        width: 62vw;
-        top: 50%;
-        bottom: auto;
-        transform: translate(-50%, -50%);
-      }
+      #sub-partner { display: none; }
 
       .bottom-nav {
         height: 8vh;
@@ -371,12 +367,7 @@
         width: 70vw;
       }
 
-      #sub-partner {
-        width: 46vw;
-        top: 50%;
-        bottom: auto;
-        transform: translate(-50%, -50%);
-      }
+      #sub-partner { display: none; }
 
       .bottom-nav {
         height: 8vh;
