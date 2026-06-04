@@ -125,9 +125,6 @@ const CSS_MAP = {
   m_manifesto_top:      ['m', '#manifesto',     'top'],
   m_manifesto_bottom:   ['m', '#manifesto',     'bottom'],
   m_manifesto_transform:['m', '#manifesto',     'transform'],
-  // Mobile — #mob-s2-logo
-  m_mobs2logo_width:    ['m', '#mob-s2-logo',   'width'],
-  m_mobs2logo_top:      ['m', '#mob-s2-logo',   'top'],
   // Mobile — #curated
   m_curated_size:       ['m', '#curated',       'font-size'],
   m_curated_lh:         ['m', '#curated',       'line-height'],
@@ -495,9 +492,6 @@ function render(){
       \`<div class="row2">\${f('m_manifesto_size','font-size')}\${f('m_manifesto_lh','line-height')}</div>\`,
       \`<div class="row2">\${sel('m_manifesto_align','text-align',['left','center','right','justify'])}\${f('m_manifesto_top','top')}</div>\`,
       \`<div class="row2">\${f('m_manifesto_bottom','bottom')}\${f('m_manifesto_transform','transform')}</div>\`,
-
-      sub('#mob-s2-logo (1-768.webp — mobile S2 only)'),
-      \`<div class="row2">\${f('m_mobs2logo_width','width')}\${f('m_mobs2logo_top','top')}</div>\`,
 
       sub('#manifesto-streep (mobile + tablet)'),
       f('d_streep_margin','margin-top'),
