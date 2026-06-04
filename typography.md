@@ -9,7 +9,6 @@
 | Elastik | Bottom nav (custom, with ClarelSerif fallback) |
 
 ---
- 
 
 ## Desktop font sizes
 
