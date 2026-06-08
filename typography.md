@@ -21,7 +21,7 @@
 | `#header-s3 .hs3-left` | "Wonder Wilder Farmer Fest Sunday…" | ClarelSerif | 35px | 40px | center | 33px | — | — | — |
 | `#header-s3 .hs3-right` | "Le Monde des Mille Couleurs…" | ClarelSerif | 35px | 40px | center | 33px | — | — | — |
 | `#manifesto` | "Bouche et Terre is not…" | ClarelSerif | 48px | 1.16 | center | — | 500px | `translateX(-50%)` | — |
-| `#curated` | "Curated by Ceci est Passata…" | ClarelSerif | 35px | 0 | center | — | JS-animated (173px) | `translateX(-50%)` | — |
+| `#curated` | "Curated by Ceci est Passata…" | ClarelSerif | 28px | 0 | center | — | JS-animated (173px) | `translateX(-50%)` | — |
 | `.bottom-nav` | "PROGRAMMA TICKETS" | Elastik | clamp(11px, 1.2vw, 48px) | 0 | space-between | — | 0 | — | 8vh |
 
 ---
