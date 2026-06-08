@@ -644,7 +644,7 @@ with blooming courage, feet in the ground and hearts wide open - where nature tr
       t = clamp(t, 0, 1);
       return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
     }
-    function segOp(p, lo, hi) { return easeOp((p - lo) / ((hi - lo) * 0.8)); }
+    function segOp(p, lo, hi) { return easeOp((p - lo) / ((hi - lo) * 0.5)); }
     function interpOp(key, p) {
       const v = V[key];
       if (p <= 0)    return v[0];
