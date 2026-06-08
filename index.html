@@ -639,6 +639,19 @@ with blooming courage, feet in the ground and hearts wide open - where nature tr
       return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
     }
     function seg(p, lo, hi) { return ease((p - lo) / (hi - lo)); }
+    // Cubic ease-in-out — snappier fade for opacity only
+    function easeOp(t) {
+      t = clamp(t, 0, 1);
+      return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+    }
+    function segOp(p, lo, hi) { return easeOp((p - lo) / (hi - lo)); }
+    function interpOp(key, p) {
+      const v = V[key];
+      if (p <= 0)    return v[0];
+      if (p <= 0.33) return lerp(v[0], v[1], segOp(p, 0,    0.33));
+      if (p <= 0.66) return lerp(v[1], v[2], segOp(p, 0.33, 0.66));
+      return               lerp(v[2], v[3], segOp(p, 0.66, 1.0));
+    }
 
     const cream = { r: 242, g: 244, b: 186 };
     const peach = { r: 255, g: 191, b: 191 };
@@ -710,16 +723,16 @@ with blooming courage, feet in the ground and hearts wide open - where nature tr
         : `${interp('logoFS', p)}px`;
       logo.style.top       = (m && !t) ? '50%'                                           : m ? `${interp('logoTop_vh_t', p) * vh}px` : `${interp('logoTop', p)}px`;
       logo.style.transform = (m && !t) ? 'translate(-50%, -50%)' : 'translateX(-50%)';
-      logo.style.opacity   = interp('logo1Op', p);
+      logo.style.opacity   = interpOp('logo1Op', p);
 
       // Logo 2 (pages 3–4, desktop only)
-      if (!m) logo2.style.opacity = interp('logo2Op', p);
+      if (!m) logo2.style.opacity = interpOp('logo2Op', p);
 
       // Intro
-      intro.style.opacity = interp('introOp', p);
+      intro.style.opacity = interpOp('introOp', p);
 
       // Event info
-      const evOp = interp('eventInfoOp', p);
+      const evOp = interpOp('eventInfoOp', p);
       eventInfo.style.opacity       = evOp;
       eventInfo.style.pointerEvents = evOp > 0.1 ? 'auto' : 'none';
       eventInfo.style.top = m
@@ -727,19 +740,19 @@ with blooming courage, feet in the ground and hearts wide open - where nature tr
         : `${interp('eventTop', p)}px`;
 
       // Header S3
-      const h3Op = interp('headerS3Op', p);
+      const h3Op = interpOp('headerS3Op', p);
       headerS3.style.opacity       = h3Op;
       headerS3.style.pointerEvents = h3Op > 0.1 ? 'auto' : 'none';
 
       // Manifesto
-      manifesto.style.opacity = interp('manifestoOp', p);
-      if (m) manifestoStreep.style.opacity = interp('streepOp', p);
+      manifesto.style.opacity = interpOp('manifestoOp', p);
+      if (m) manifestoStreep.style.opacity = interpOp('streepOp', p);
 
       // Sub-partner logos (S4 only)
-      subPartner.style.opacity = interp('subPartnerOp', p);
+      subPartner.style.opacity = interpOp('subPartnerOp', p);
 
       // Curated
-      curated.style.opacity = interp('curatedOp', p);
+      curated.style.opacity = interpOp('curatedOp', p);
       curated.style.bottom = m
         ? `${interp(t ? 'curatedBot_vh_t' : 'curatedBot_vh', p) * vh}px`
         : `${interp('curatedBottom', p)}px`;
