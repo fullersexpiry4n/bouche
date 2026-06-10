@@ -634,17 +634,13 @@ with blooming courage, feet in the ground and hearts wide open - where nature tr
     // ── Helpers ───────────────────────────────────────────────────────────────
     function clamp(v, lo, hi) { return Math.max(lo, Math.min(hi, v)); }
     function lerp(a, b, t)    { return a + (b - a) * clamp(t, 0, 1); }
+    // Step function — instant snap at the midpoint of each scroll segment (no easing)
     function ease(t) {
-      t = clamp(t, 0, 1);
-      return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+      return clamp(t, 0, 1) < 0.5 ? 0 : 1;
     }
     function seg(p, lo, hi) { return ease((p - lo) / (hi - lo)); }
-    // Cubic ease-in-out — snappier fade for opacity only
-    function easeOp(t) {
-      t = clamp(t, 0, 1);
-      return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
-    }
-    function segOp(p, lo, hi) { return easeOp((p - lo) / ((hi - lo) * 0.55)); }
+    const easeOp = ease;
+    function segOp(p, lo, hi) { return easeOp((p - lo) / (hi - lo)); }
     function interpOp(key, p) {
       const v = V[key];
       if (p <= 0)    return v[0];
