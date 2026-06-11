@@ -32,7 +32,7 @@
 | Element | Text | Size | Line height | Alignment | Top | Bottom | Transform |
 |---|---|---|---|---|---|---|---|
 | `#intro` | "Bouche et Terre is genuinely…" | 3.5vw | 1.3 | center | 4vh | — | `translateX(-50%)` |
-| `#event-info` | "Wonder Wilder Farmer Fest Sunday…" | 3.5vw | — | center (2-col grid) | JS (70vh → 0); padding-top 6vh; **persistent header on phone (all states, replaces header-s3 text)** | — | — |
+| `#event-info` | "Wonder Wilder Farmer Fest Sunday…" | 3.5vw | — | center (2-col grid) | JS (70vh → 0); padding-top 3vh; **persistent header on phone (all states, replaces header-s3 text)** | — | — |
 | `#header-s3` | "Wonder Wilder Farmer Fest / Le…" | 3.5vw | 1.25 | left / right | 8vh | — | — |
 | `.hs3-center` / `.hs3-logo-phone` (**1.png** — S3/S4) | "Bouche et terre" | width 72vw | — | center | 8vh | — | abs, `translateX(-50%)` — between header & manifesto (phone; tablet still uses bouche_logo.png) |
 | `#manifesto` | "Bouche et Terre is not…" | min(4.5vw, 19px) | 1.3 | justify | 48% | auto | `translate(-50%, -50%)` — `<br>` hidden |
@@ -70,7 +70,7 @@
 | `curatedBottom` | 160, 160, 160, 160 | px | `#curated` bottom |
 | `logoFS_vw` | 100, 100, 28, 28 | ×vw | mobile logo width |
 | `logoTop_vh` | 20, 20, 3, 3 | ×vh | mobile logo top |
-| `eventTop_vh` | 70, 0, 0, 0 | ×vh | mobile event-info top (phone: persistent header, +6vh padding) |
+| `eventTop_vh` | 70, 0, 0, 0 | ×vh | mobile event-info top (phone: persistent header, +3vh padding) |
 | `curatedBot_vh` | 0, 11, 11, 19 | ×vh | mobile curated bottom |
 | `logoFS_vw_t` | 90, 90, 28, 28 | ×vw | tablet logo width |
 | `logoTop_vh_t` | 15, 15, 3, 3 | ×vh | tablet logo top |
