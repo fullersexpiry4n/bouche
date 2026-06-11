@@ -670,18 +670,24 @@ smoke in your hair and feral flavors that make you forget what a supermarket loo
         bottomNav.style.paddingRight = `${Math.max(16, ox + 86 * scale)}px`;
       }
     }
-    // Keep the full-bleed phone mid-logo centered in the gap between #event-info
-    // and #manifesto. Width stays 100vw; only the vertical position is adjusted.
+    // Phone: stack header → 3vh → full-bleed logo → 3vh → manifesto.
     const LOGO_ASPECT = 3840 / 1038; // boucheet.png width / height
     function positionPhoneLogo() {
       const phone = window.innerWidth < 768;
-      if (!phone || flow()) { hs3Center.style.top = ''; return; }
-      // State-independent: header bottom = event-info's height (it anchors at top:0),
-      // manifesto top is centred (48%) and constant across states.
-      const headerBottom = eventInfo.offsetHeight;
-      const mTop  = manifesto.getBoundingClientRect().top;
-      const logoH = window.innerWidth / LOGO_ASPECT; // full-width render height
-      hs3Center.style.top = `${Math.round(headerBottom + (mTop - headerBottom - logoH) / 2)}px`;
+      if (!phone || flow()) {
+        hs3Center.style.top = '';
+        manifesto.style.top = '';
+        manifesto.style.transform = '';
+        return;
+      }
+      const vh = window.innerHeight / 100;
+      const headerBottom = eventInfo.offsetHeight; // event-info anchors at top:0
+      const logoTop = headerBottom + 3 * vh;       // 3vh above the logo
+      const logoH   = window.innerWidth / LOGO_ASPECT;
+      hs3Center.style.top = `${Math.round(logoTop)}px`;
+      // Top-anchor the manifesto 3vh below the logo (overrides its centred CSS)
+      manifesto.style.top = `${Math.round(logoTop + logoH + 3 * vh)}px`;
+      manifesto.style.transform = 'translateX(-50%)';
     }
     if (phoneLogo) phoneLogo.addEventListener('load', positionPhoneLogo);
 
