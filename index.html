@@ -608,6 +608,7 @@ smoke in your hair and feral flavors that make you forget what a supermarket loo
     const manifestoStreep = document.getElementById('manifesto-streep');
     const subPartner = document.getElementById('sub-partner');
     const curated   = document.getElementById('curated');
+    const moreInfo  = document.getElementById('more-info');
     const bottomNav = document.getElementById('bottom-nav');
 
     const mob = () => window.innerWidth < 1024;
@@ -703,6 +704,7 @@ smoke in your hair and feral flavors that make you forget what a supermarket loo
       manifestoOp:     [0,     1,     1,     1    ],
       streepOp:        [0,     0,     1,     1    ],
       curatedOp:       [0,     1,     1,     1    ],
+      moreInfoOp:      [0,     0,     0,     1    ],
       subPartnerOp:    [0,     0,     0,     1    ],
     };
 
@@ -771,6 +773,10 @@ smoke in your hair and feral flavors that make you forget what a supermarket loo
       const curOp = interpOp('curatedOp', p);
       curated.style.opacity = curOp;
       curated.style.pointerEvents = curOp > 0.1 ? 'auto' : 'none';
+      // More-info (emails) — S4 only; nested opacity multiplies with curated
+      const miOp = interpOp('moreInfoOp', p);
+      moreInfo.style.opacity = miOp;
+      moreInfo.style.pointerEvents = miOp > 0.1 ? 'auto' : 'none';
       curated.style.bottom = m
         ? `${interp(t ? 'curatedBot_vh_t' : 'curatedBot_vh', p) * vh}px`
         : `${interp('curatedBottom', p)}px`;
