@@ -21,7 +21,7 @@
 | `#header-s3 .hs3-left` | "Wonder Wilder Farmer Fest Sunday…" | ClarelSerif | 35px | 40px | center | 33px | — | — | — |
 | `#header-s3 .hs3-right` | "Le Monde des Mille Couleurs…" | ClarelSerif | 35px | 40px | center | 33px | — | — | — |
 | `#manifesto` | "Bouche et Terre is not…" | ClarelSerif | 44px | 1.16 | center | — | 500px | `translateX(-50%)` | — |
-| `#curated` | "Curated by Ceci est Passata…" | ClarelSerif | 28px | 1.45 | center | — | JS-animated (173px) | `translateX(-50%)` | — |
+| `#curated` | "Curated by Ceci est Passata…" | ClarelSerif | 28px | 1.45 | center | — | 160px | `translateX(-50%)` | — |
 | `#more-info` | "More info? steven@… dries@…" (S4 only) | ClarelSerif | 0.86em (~24px) | inherit | center | — | nested in `#curated` | — | — |
 | `.bottom-nav` | "PROGRAMMA TICKETS" | Elastik | clamp(11px, 1.2vw, 48px) | 0 | space-between | — | 0 | — | 8vh |
 
@@ -67,7 +67,7 @@
 | `logo1Op` | 1, 1, 0, 0 | — | `#logo` opacity |
 | `logo2Op` | 0, 0, 1, 1 | — | `#logo2` opacity |
 | `eventTop` | 1123, 36, 36, 36 | px | `#event-info` top |
-| `curatedBottom` | 173, 173, 173, 173 | px | `#curated` bottom |
+| `curatedBottom` | 160, 160, 160, 160 | px | `#curated` bottom |
 | `logoFS_vw` | 100, 100, 28, 28 | ×vw | mobile logo width |
 | `logoTop_vh` | 20, 20, 3, 3 | ×vh | mobile logo top |
 | `eventTop_vh` | 70, 3, 0, 0 | ×vh | mobile event-info top |
