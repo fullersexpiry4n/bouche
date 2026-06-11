@@ -21,7 +21,8 @@
 | `#header-s3 .hs3-left` | "Wonder Wilder Farmer Fest Sunday…" | ClarelSerif | 35px | 40px | center | 33px | — | — | — |
 | `#header-s3 .hs3-right` | "Le Monde des Mille Couleurs…" | ClarelSerif | 35px | 40px | center | 33px | — | — | — |
 | `#manifesto` | "Bouche et Terre is not…" | ClarelSerif | 44px | 1.16 | center | — | 500px | `translateX(-50%)` | — |
-| `#curated` | "Curated by Ceci est Passata…" | ClarelSerif | 28px | 0 | center | — | JS-animated (173px) | `translateX(-50%)` | — |
+| `#curated` | "Curated by Ceci est Passata…" | ClarelSerif | 28px | 1.45 | center | — | JS-animated (173px) | `translateX(-50%)` | — |
+| `#more-info` | "More info? steven@… dries@…" (S4 only) | ClarelSerif | 0.86em (~24px) | inherit | center | — | nested in `#curated` | — | — |
 | `.bottom-nav` | "PROGRAMMA TICKETS" | Elastik | clamp(11px, 1.2vw, 48px) | 0 | space-between | — | 0 | — | 8vh |
 
 ---
@@ -37,6 +38,7 @@
 | `#manifesto` | "Bouche et Terre is not…" | min(4.5vw, 19px) | 1.3 | justify | 48% | auto | `translate(-50%, -50%)` — `<br>` hidden |
 | `#manifesto-streep` | Brown brush-stroke PNG below manifesto (S3/S4 only) | 100vw | — | — | — | `margin-top: 0.6em` | `left:50% translateX(-50%)` |
 | `#curated` | "Curated by Ceci est Passata…" | 3.5vw | 1.6 | center | — | JS-animated (6vh) | `translateX(-50%)` |
+| `#more-info` | "More info? steven@… dries@…" (S4 only) | 0.86em (~3.0vw) | inherit | center | — | nested in `#curated` | — |
 | `.bottom-nav` | "PROGRAMMA TICKETS" | 5vw | — | space-between | — | 0 | — |
 | `#logo` (fluid) | "Bouche et terre" | 100vw→28vw JS-animated | — | center | 20vh→3vh JS-animated | — | none |
 
@@ -51,6 +53,7 @@
 | `#manifesto` | "Bouche et Terre is not…" | 3vw | 1.3 | center | 55% | auto | `translate(-50%, -50%)` — `<br>` hidden |
 | `#manifesto-streep` | Brown brush-stroke PNG below manifesto (S3/S4 only) | 100vw | — | — | — | `margin-top: 0.6em` | `left:50% translateX(-50%)` |
 | `#curated` | "Curated by Ceci est Passata…" | 2.0vw | 1.6 | center | — | JS-animated (15vh) | `translateX(-50%)` |
+| `#more-info` | "More info? steven@… dries@…" (S4 only) | 0.72em (~1.44vw) | inherit | center | — | nested in `#curated` | — |
 | `.bottom-nav` | "PROGRAMMA TICKETS" | 2.5vw | — | space-between | — | 0 | — |
 
 ---
