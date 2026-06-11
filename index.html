@@ -9,16 +9,19 @@
   <link rel="preload" as="image" href="images/1-1920.webp"
     imagesrcset="images/1-768.webp 768w, images/1-1024.webp 1024w, images/1-1920.webp 1920w"
     imagesizes="(max-width: 767px) 100vw, (max-width: 1023px) 90vw, 100vw" fetchpriority="high">
-  <link rel="preload" href="fonts/ClarelSerif-Regular.otf" as="font" type="font/otf" crossorigin>
+  <link rel="preload" href="fonts/ClarelSerif-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/Elastik-C.woff2" as="font" type="font/woff2" crossorigin>
 <style>
     @font-face {
       font-family: 'ClarelSerif';
-      src: url('fonts/ClarelSerif-Regular.otf') format('opentype');
+      src: url('fonts/ClarelSerif-Regular.woff2') format('woff2'),
+           url('fonts/ClarelSerif-Regular.otf') format('opentype');
       font-display: swap;
     }
     @font-face {
       font-family: 'Elastik';
-      src: url('fonts/Elastik-C.otf') format('opentype');
+      src: url('fonts/Elastik-C.woff2') format('woff2'),
+           url('fonts/Elastik-C.otf') format('opentype');
       font-display: swap;
     }
 
