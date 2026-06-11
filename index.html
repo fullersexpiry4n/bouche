@@ -186,13 +186,24 @@
       transform: translateX(-50%);
       font-family: 'ClarelSerif', Georgia, serif;
       font-size: 28px;
-      line-height: 0;
+      line-height: 1.45;
       letter-spacing: normal;
       white-space: nowrap;
+      text-align: center;
       color: var(--brown);
       opacity: 0;
       will-change: opacity;
     }
+    #more-info {
+      font-size: 0.72em;
+      margin-top: 0.5em;
+    }
+    #more-info a {
+      color: inherit;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    #more-info a:hover { opacity: 0.6; }
 
     /* ── BOTTOM NAV (fixed viewport-width, padding aligned by JS) ── */
     .bottom-nav {
@@ -571,7 +582,11 @@ smoke in your hair and feral flavors that make you forget what a supermarket loo
     </picture>
 
     <div id="curated">
-      Curated by Ceci est Passata &amp; Le Monde des Mille Couleurs
+      <div>Curated by Ceci est Passata &amp; Le Monde des Mille Couleurs</div>
+      <div id="more-info">More info?&nbsp;
+        <a href="mailto:steven@eatmosphere.be">steven@eatmosphere.be</a>&nbsp;&nbsp;
+        <a href="mailto:dries@millecouleurs.be">dries@millecouleurs.be</a>
+      </div>
     </div>
 
   </div>
@@ -753,7 +768,9 @@ smoke in your hair and feral flavors that make you forget what a supermarket loo
       subPartner.style.opacity = interpOp('subPartnerOp', p);
 
       // Curated
-      curated.style.opacity = interpOp('curatedOp', p);
+      const curOp = interpOp('curatedOp', p);
+      curated.style.opacity = curOp;
+      curated.style.pointerEvents = curOp > 0.1 ? 'auto' : 'none';
       curated.style.bottom = m
         ? `${interp(t ? 'curatedBot_vh_t' : 'curatedBot_vh', p) * vh}px`
         : `${interp('curatedBottom', p)}px`;
