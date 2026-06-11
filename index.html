@@ -670,24 +670,18 @@ smoke in your hair and feral flavors that make you forget what a supermarket loo
         bottomNav.style.paddingRight = `${Math.max(16, ox + 86 * scale)}px`;
       }
     }
-    // Keep the phone mid-logo centered in the gap between #event-info and #manifesto,
-    // shrinking it to fit so it is ALWAYS between them on any viewport.
+    // Keep the full-bleed phone mid-logo centered in the gap between #event-info
+    // and #manifesto. Width stays 100vw; only the vertical position is adjusted.
     const LOGO_ASPECT = 3840 / 1038; // boucheet.png width / height
     function positionPhoneLogo() {
       const phone = window.innerWidth < 768;
-      if (!phone || flow()) { hs3Center.style.top = ''; hs3Center.style.width = ''; return; }
+      if (!phone || flow()) { hs3Center.style.top = ''; return; }
       // State-independent: header bottom = event-info's height (it anchors at top:0),
       // manifesto top is centred (48%) and constant across states.
       const headerBottom = eventInfo.offsetHeight;
-      const mTop = manifesto.getBoundingClientRect().top;
-      const gap  = mTop - headerBottom;
-      const margin = gap * 0.12;                 // breathing room top & bottom
-      const maxH = Math.max(0, gap - 2 * margin);
-      let w = window.innerWidth;                 // full-bleed by default
-      if (w / LOGO_ASPECT > maxH) w = maxH * LOGO_ASPECT; // shrink to fit the gap
-      const logoH = w / LOGO_ASPECT;
-      hs3Center.style.width = `${Math.round(w)}px`;
-      hs3Center.style.top   = `${Math.round(headerBottom + (gap - logoH) / 2)}px`;
+      const mTop  = manifesto.getBoundingClientRect().top;
+      const logoH = window.innerWidth / LOGO_ASPECT; // full-width render height
+      hs3Center.style.top = `${Math.round(headerBottom + (mTop - headerBottom - logoH) / 2)}px`;
     }
     if (phoneLogo) phoneLogo.addEventListener('load', positionPhoneLogo);
 
