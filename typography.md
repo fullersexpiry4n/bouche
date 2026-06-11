@@ -34,7 +34,7 @@
 | `#intro` | "Bouche et Terre is genuinely…" | 3.5vw | 1.3 | center | 4vh | — | `translateX(-50%)` |
 | `#event-info` | "Wonder Wilder Farmer Fest Sunday…" | 3.5vw | — | center (2-col grid) | JS (70vh → 0); padding-top 3vh; **persistent header on phone (all states, replaces header-s3 text)** | — | — |
 | `#header-s3` | "Wonder Wilder Farmer Fest / Le…" | 3.5vw | 1.25 | left / right | 8vh | — | — |
-| `.hs3-center` / `.hs3-logo-phone` (**1.png** — S3/S4) | "Bouche et terre" | width 72vw | — | center | 8vh | — | abs, `translateX(-50%)` — between header & manifesto (phone; tablet still uses bouche_logo.png) |
+| `.hs3-center` / `.hs3-logo-phone` (**boucheet.png** — S3/S4) | "Bouche et terre" | width 72vw | — | center | 14vh | — | abs, `translateX(-50%)` — between header & manifesto (phone; tablet still uses bouche_logo.png) |
 | `#manifesto` | "Bouche et Terre is not…" | min(4.5vw, 19px) | 1.3 | justify | 48% | auto | `translate(-50%, -50%)` — `<br>` hidden |
 | `#manifesto-streep` | Brown brush-stroke PNG below manifesto (S3/S4 only) | 100vw | — | — | — | `margin-top: 0.6em` | `left:50% translateX(-50%)` |
 | `#curated` | "Curated by Ceci est Passata…" | 3.5vw | 1.6 | center | — | JS-animated (6vh) | `translateX(-50%)` |
