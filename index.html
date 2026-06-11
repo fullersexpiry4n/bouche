@@ -297,10 +297,13 @@
       }
 
       #event-info {
-        padding: 0 6vw;
+        padding: 6vh 6vw 0;
         gap: 1.5vw 3vw;
         font-size: 3.5vw;
       }
+
+      /* Header-s3 text replaced by the persistent #event-info; keep only the logo */
+      .hs3-left, .hs3-right { display: none; }
 
       #header-s3 {
         padding: 5vw 6vw;
@@ -697,7 +700,7 @@ smoke in your hair and feral flavors that make you forget what a supermarket loo
       // Mobile viewport units (×vw or ×vh)
       logoFS_vw:       [100,    100,    28,    28   ],
       logoTop_vh:      [20,    20,    3,    3   ],
-      eventTop_vh:     [70,    5,    0,    0   ],
+      eventTop_vh:     [70,    0,    0,    0   ],
       curatedBot_vh:   [0,    11,    11,    19   ],
       // Tablet viewport units (×vw or ×vh)
       logoFS_vw_t:     [90,    90,    28,    28   ],
@@ -759,8 +762,9 @@ smoke in your hair and feral flavors that make you forget what a supermarket loo
       // Intro
       intro.style.opacity = interpOp('introOp', p);
 
-      // Event info
-      const evOp = interpOp('eventInfoOp', p);
+      // Event info — on phones it persists across all states (replaces header-s3)
+      const phone = m && !t;
+      const evOp = phone ? 1 : interpOp('eventInfoOp', p);
       eventInfo.style.opacity       = evOp;
       eventInfo.style.pointerEvents = evOp > 0.1 ? 'auto' : 'none';
       eventInfo.style.top = m
