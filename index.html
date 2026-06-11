@@ -670,7 +670,7 @@ smoke in your hair and feral flavors that make you forget what a supermarket loo
         bottomNav.style.paddingRight = `${Math.max(16, ox + 86 * scale)}px`;
       }
     }
-    // Phone: stack header → 3vh → full-bleed logo → 3vh → manifesto.
+    // Phone: stack header → 1.5vh → full-bleed logo → 1.5vh → manifesto.
     const LOGO_ASPECT = 3840 / 1038; // boucheet.png width / height
     function positionPhoneLogo() {
       const phone = window.innerWidth < 768;
@@ -682,11 +682,11 @@ smoke in your hair and feral flavors that make you forget what a supermarket loo
       }
       const vh = window.innerHeight / 100;
       const headerBottom = eventInfo.offsetHeight; // event-info anchors at top:0
-      const logoTop = headerBottom + 3 * vh;       // 3vh above the logo
+      const logoTop = headerBottom + 1.5 * vh;     // 1.5vh above the logo
       const logoH   = window.innerWidth / LOGO_ASPECT;
       hs3Center.style.top = `${Math.round(logoTop)}px`;
-      // Top-anchor the manifesto 3vh below the logo (overrides its centred CSS)
-      manifesto.style.top = `${Math.round(logoTop + logoH + 3 * vh)}px`;
+      // Top-anchor the manifesto 1.5vh below the logo (overrides its centred CSS)
+      manifesto.style.top = `${Math.round(logoTop + logoH + 1.5 * vh)}px`;
       manifesto.style.transform = 'translateX(-50%)';
     }
     if (phoneLogo) phoneLogo.addEventListener('load', positionPhoneLogo);
