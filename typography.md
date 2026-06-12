@@ -21,8 +21,7 @@
 | `#header-s3 .hs3-left` | "Wonder Wilder Farmer Fest Sunday…" | ClarelSerif | 35px | 40px | center | 33px | — | — | — |
 | `#header-s3 .hs3-right` | "Le Monde des Mille Couleurs…" | ClarelSerif | 35px | 40px | center | 33px | — | — | — |
 | `#manifesto` | "Bouche et Terre is not…" | ClarelSerif | 44px | 1.16 | center | — | 500px | `translateX(-50%)` | — |
-| `#curated` | "Curated by Ceci est Passata…" | ClarelSerif | 28px | 1.45 | center | — | 160px | `translateX(-50%)` | — |
-| `#more-info` | "More info? steven@… dries@…" (S4 only) | ClarelSerif | 0.86em (~24px) | inherit | center | — | nested in `#curated` | — | — |
+| `#curated` | "Curated by Ceci est Passata…" | ClarelSerif | 28px | 1.45 | center | — | JS-animated (173px) | `translateX(-50%)` | — |
 | `.bottom-nav` | "PROGRAMMA TICKETS" | Elastik | clamp(11px, 1.2vw, 48px) | 0 | space-between | — | 0 | — | 8vh |
 
 ---
@@ -32,13 +31,12 @@
 | Element | Text | Size | Line height | Alignment | Top | Bottom | Transform |
 |---|---|---|---|---|---|---|---|
 | `#intro` | "Bouche et Terre is genuinely…" | 3.5vw | 1.3 | center | 4vh | — | `translateX(-50%)` |
-| `#event-info` | "Wonder Wilder Farmer Fest Sunday…" | 3.5vw | — | center (2-col grid) | JS (70vh → 0); padding-top 3vh; **persistent header on phone (all states, replaces header-s3 text)** | — | — |
+| `#event-info` | "Wonder Wilder Farmer Fest Sunday…" | 3.5vw | — | center (2-col grid) | JS-animated (75vh → 3vh) | — | — |
 | `#header-s3` | "Wonder Wilder Farmer Fest / Le…" | 3.5vw | 1.25 | left / right | 8vh | — | — |
-| `.hs3-center` / `.hs3-logo-phone` (**boucheet.png** — S3/S4) | "Bouche et terre" | 100vw (full-bleed, always) | — | center | JS: 1.5vh below header | — | abs, `translateX(-50%)` — JS `positionPhoneLogo()` stacks header → 1.5vh → logo → 1.5vh → manifesto (phone; tablet still uses bouche_logo.png) |
-| `#manifesto` | "Bouche et Terre is not…" | min(4.5vw, 19px) | 1.3 | justify | 48% (phone: JS top-anchors 1.5vh below logo) | auto | `translate(-50%, -50%)` (phone: `translateX(-50%)`) — `<br>` hidden |
+| `.hs3-logo-mob` (bouche_logo.png — S3/S4) | "Bouche et terre" | 100% | — | — | — | — | — |
+| `#manifesto` | "Bouche et Terre is not…" | min(4.5vw, 19px) | 1.3 | justify | 48% | auto | `translate(-50%, -50%)` — `<br>` hidden |
 | `#manifesto-streep` | Brown brush-stroke PNG below manifesto (S3/S4 only) | 100vw | — | — | — | `margin-top: 0.6em` | `left:50% translateX(-50%)` |
 | `#curated` | "Curated by Ceci est Passata…" | 3.5vw | 1.6 | center | — | JS-animated (6vh) | `translateX(-50%)` |
-| `#more-info` | "More info? steven@… dries@…" (S4 only) | 0.86em (~3.0vw) | inherit | center | — | nested in `#curated` | — |
 | `.bottom-nav` | "PROGRAMMA TICKETS" | 5vw | — | space-between | — | 0 | — |
 | `#logo` (fluid) | "Bouche et terre" | 100vw→28vw JS-animated | — | center | 20vh→3vh JS-animated | — | none |
 
@@ -53,7 +51,6 @@
 | `#manifesto` | "Bouche et Terre is not…" | 3vw | 1.3 | center | 55% | auto | `translate(-50%, -50%)` — `<br>` hidden |
 | `#manifesto-streep` | Brown brush-stroke PNG below manifesto (S3/S4 only) | 100vw | — | — | — | `margin-top: 0.6em` | `left:50% translateX(-50%)` |
 | `#curated` | "Curated by Ceci est Passata…" | 2.0vw | 1.6 | center | — | JS-animated (15vh) | `translateX(-50%)` |
-| `#more-info` | "More info? steven@… dries@…" (S4 only) | 0.72em (~1.44vw) | inherit | center | — | nested in `#curated` | — |
 | `.bottom-nav` | "PROGRAMMA TICKETS" | 2.5vw | — | space-between | — | 0 | — |
 
 ---
@@ -70,7 +67,7 @@
 | `curatedBottom` | 160, 160, 160, 160 | px | `#curated` bottom |
 | `logoFS_vw` | 100, 100, 28, 28 | ×vw | mobile logo width |
 | `logoTop_vh` | 20, 20, 3, 3 | ×vh | mobile logo top |
-| `eventTop_vh` | 70, 0, 0, 0 | ×vh | mobile event-info top (phone: persistent header, +3vh padding) |
+| `eventTop_vh` | 70, 0, 0, 0 | ×vh | mobile event-info top |
 | `curatedBot_vh` | 0, 11, 11, 19 | ×vh | mobile curated bottom |
 | `logoFS_vw_t` | 90, 90, 28, 28 | ×vw | tablet logo width |
 | `logoTop_vh_t` | 15, 15, 3, 3 | ×vh | tablet logo top |
